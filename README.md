@@ -1,48 +1,169 @@
-# Containing Files
-
-1. The LICENSE file:
-In most cases, the license for SAP sample projects is `Apache 2.0`.
-
-2. The REUSE.toml file: 
-The [Reuse Tool](https://reuse.software/) must be used for your samples project. You can find the REUSE.toml in the project initial. Please replace the parts inside the single angle quotation marks < > by the specific information for your repository.
-
-3. The README.md file (this file):
-Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
-
-# Session ID - Session Title
+# AD262 - Agentic CAP: Build MCP Servers and Enterprise AI Agents
 
 ## Description
 
-This repository contains the material for the SAP TechEd 2026 session called Session ID - Session Title.  
+This repository contains the material for the SAP TechEd 2026 session **AD262 - Agentic CAP: Build MCP Servers and Enterprise AI Agents**.
+
+Learn how to turn apps based on SAP Cloud Application Programming Model (CAP) into enterprise AI agents using the Model Context Protocol (MCP) and Agent2Agent protocol. With the integration of the SAP AI Core infrastructure, it's straightforward to embed AI capabilities in CAP applications.
 
 ## Overview
 
-This session introduces attendees to...
+**Use Case:** AI-powered invoice matching system that automatically finds and matches incoming invoices with purchase orders using semantic similarity and business rules.
+
+This hands-on session introduces attendees to building enterprise AI agents with CAP by:
+- Understanding the Model Context Protocol (MCP) and how it enables AI agents to interact with CAP services
+- Creating an MCP server that exposes CAP services to AI agents
+- Building intelligent invoice-to-PO matching using semantic search
+- Creating conversational AI agents with natural language interfaces
+- Integrating SAP AI Core for enterprise-grade recommendations (optional)
+- Implementing audit logging and change tracking for AI governance (optional)
+
+**Duration:** 2 hours (core content) + optional advanced topics
+
+**CAP plugins added in the session:**
+
+| Plugin | What it does |
+|---|---|
+| [`@cap-js/mcp`](https://github.com/cap-js/mcp) | Expose your CAP service as an MCP server — consumable by any AI tool |
+| [`@cap-js/agents`](https://github.com/cap-js/agents) | Turn your CAP service into a fully autonomous A2A AI agent |
+| [`@cap-js/ai`](https://github.com/cap-js/ai) | Embed AI features (RPT-1 recommendations) directly in your CAP app |
+
+**One S/4HANA Data Product is integrated using `cds import`:**
+
+| API | Version | Used for |
+|---|---|---|
+| `Supplier` | Data Product | Supplier master data |
 
 ## Requirements
 
-The requirements to follow the exercises in this repository are...
+To complete the exercises in this repository, you need:
+
+### Software Requirements
+- **npm**
+- **Node.js** (v22 or higher)
+- **@sap/cds-dk** (CAP Development Kit) - latest version
+- **Visual Studio Code**
+- a AI coding tool like  **Claude Code** (required for AI-assisted development)
+
+### Workshop Materials
+- **sap-s4com-Supplier-v1.json** - S/4HANA Supplier data product (provided in root folder. Originally from [SAP Business Accelerator Hub](https://api.sap.com/dataproduct/sap-s4com-Supplier-v1/overview) )
+  - Copy this file to your project root when you reach Exercise 2
+
+### Knowledge Prerequisites
+- Basic understanding of SAP Cloud Application Programming Model (CAP)
+- Familiarity with JavaScript/Node.js
+- Basic understanding of REST APIs and OData services
+- Basic knowledge of AI agents and prompting (helpful but not required)
+
+### Optional
+- **SAP AI Core** access (for optional exercise on SAP-RPT-1 recommendations)
+- **SAP BTP** account (for deployment scenarios)
 
 ## Exercises
 
-Provide the exercise content here directly in README.md using [markdown](https://guides.github.com/features/mastering-markdown/) and linking to the specific exercise pages, below is an example.
+This workshop is structured into progressive exercises:
 
-- [Getting Started](exercises/ex0/)
-- [Exercise 1 - First Exercise Description](exercises/ex1/)
-    - [Exercise 1.1 - Exercise 1 Sub Exercise 1 Description](exercises/ex1#exercise-11-sub-exercise-1-description)
-    - [Exercise 1.2 - Exercise 1 Sub Exercise 2 Description](exercises/ex1#exercise-12-sub-exercise-2-description)
-- [Exercise 2 - Second Exercise Description](exercises/ex2/)
-    - [Exercise 2.1 - Exercise 2 Sub Exercise 1 Description](exercises/ex2#exercise-21-sub-exercise-1-description)
-    - [Exercise 2.2 - Exercise 2 Sub Exercise 2 Description](exercises/ex2#exercise-22-sub-exercise-2-description)
+### Core Exercises (115 minutes)
 
-  
-**OR** Link to the Tutorial Navigator for example...
+- **[Exercise 0 - Initialize and Generate App](exercises/ex0/)** (20 min)
+  - Initialize CAP project
+  - Generate data model for invoices, POs, and match decisions
+  - Create sample data
+  - Use of the CAP Skills library
 
-Start the exercises [here](https://developers.sap.com/tutorials/abap-environment-trial-onboarding.html).
+- **[Exercise 1 - Build React UI](exercises/ex1/)** (20 min)
+  - Generate React application
+  - Build invoice and PO matching interface
+  - Implement decision workflow
 
-**IMPORTANT**
+- **[Exercise 2 - Add Supplier Data](exercises/ex2/)** (15 min)
+  - Import S/4HANA Supplier data product
+  - Add supplier details to invoice view
+  - Show payment terms and blocking status
 
-Your repo must contain the .reuse and LICENSES folder and the License section below. DO NOT REMOVE the section or folders/files. Also, remove all unused template assets(images, folders, etc) from the exercises folder. 
+- **[Exercise 3 - Add MCP Server](exercises/ex3/)** (15 min)
+  - Expose matching service over MCP
+  - Configure Claude Desktop to connect
+  - Test conversational queries
+
+- **[Exercise 4 - Add Semantic Search](exercises/ex4/)** (20 min)
+  - Install AI and vector search packages
+  - Implement semantic search with local embeddings
+  - Test meaning-based matching
+
+- **[Exercise 5 - Add Agent with Skills](exercises/ex5/)** (25 min)
+  - Configure CAP service as an agent
+  - Create AP domain policy skill
+  - Test intelligent match proposals
+
+### Optional Advanced Exercises (35 minutes)
+
+- **[Exercise 6 - Add Audit Log and Change Tracking](exercises/ex6/)** (Optional, 15 min)
+  - Configure audit logging for data privacy
+  - Enable change tracking on match decisions
+  - Test audit trail
+
+- **[Exercise 7 - Add SAP-RPT-1 Recommendations](exercises/ex7/)** (Optional, 20 min)
+  - Integrate SAP AI Core
+  - Use SAP-RPT-1 model for supplier recommendations
+  - Add cost savings analysis
+
+## Learning Objectives
+
+By the end of this session, you will be able to:
+
+1. ✅ Understand how Model Context Protocol (MCP) enables AI agents to interact with enterprise applications
+2. ✅ Build an MCP server that exposes CAP services to AI agents
+3. ✅ Implement Agent2Agent protocol for multi-agent collaboration
+4. ✅ Create practical AI-powered business processes using CAP and MCP
+5. ✅ Integrate enterprise AI capabilities with SAP AI Core (optional)
+6. ✅ Implement governance and compliance features for AI agents (optional)
+
+## Project Structure
+
+```
+invoice-matching/           # Your CAP project (created in Exercise 0)
+├── db/
+│   ├── schema.cds         # Data model (Invoices, POs, Matches)
+│   └── data/              # Test data
+├── srv/
+│   ├── invoice-matching-service.cds   # Service definitions
+│   ├── invoice-matching-service.js    # Service implementation
+│   ├── recommendation-service.cds     # AI recommendations (optional)
+│   ├── mcp-config.cds                 # MCP server configuration
+│   ├── agent-config.yaml              # AI agent configuration
+│   ├── skills/                        # Custom agent skills
+│   └── prompts/                       # Agent prompt templates
+├── app/matching/              # React UI (generated in Exercise 4)
+│   ├── src/
+│   │   ├── App.jsx
+│   │   └── components/
+│   │       ├── Dashboard.jsx
+│   │       ├── InvoiceManager.jsx
+│   │       ├── AgentChat.jsx
+│   │       ├── SupplierRecommendations.jsx
+│   │       └── AuditDashboard.jsx
+│   └── package.json
+├── package.json
+└── sap-s4com-Supplier-v1.json  # Supplier data product
+```
+
+## Key Technologies
+
+- **SAP Cloud Application Programming Model (CAP)** - Enterprise application framework
+- **Model Context Protocol (MCP)** - Standard protocol for AI-application integration
+- **Agent2Agent Protocol** - Multi-agent communication standard
+- **SAP AI Core** - Enterprise AI infrastructure (optional)
+- **Node.js & Express** - Runtime and web framework
+- **SQLite/HANA** - Database options
+
+
+## Further Learning
+
+- [CAP Documentation](https://cap.cloud.sap/)
+- [Model Context Protocol Specification](https://modelcontextprotocol.io/)
+- [SAP AI Core Documentation](https://help.sap.com/docs/sap-ai-core)
+
 
 ## Contributing
 Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) to understand the contribution guidelines.
@@ -55,4 +176,4 @@ Please read the [SAP Open Source Code of Conduct](https://github.com/SAP-samples
 Support for the content in this repository is available during the actual time of the online session for which this content has been designed. Otherwise, you may request support via the [Issues](../../issues) tab.
 
 ## License
-Copyright (20xx-)20xx SAP SE or an SAP affiliate company and <your-project> contributors. Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP/<your-project>).
+Copyright 2026 SAP SE or an SAP affiliate company and AD262 contributors. Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP/AD262).
