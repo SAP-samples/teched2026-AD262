@@ -135,7 +135,7 @@ Check these key features:
 - ✅ Is there a visual warning for blocked suppliers?
 - ✅ Are payment terms displayed?
 
-## Exercise 2.3 - Deploy Updated Schema
+## Exercise 2.3 - Test the updated Schema
 
 After saving the generated code, test the updated schema.
 
@@ -167,7 +167,6 @@ Let's verify the supplier information appears correctly.
    - Should have a ⚠️ warning icon or red indicator
    - Should show blocking reason (e.g., "Quality issue - invoice dispute")
 
-<br>![Supplier Details](/exercises/ex2/images/02_04_0010.png)
 
 ### Check via OData
 
@@ -221,15 +220,6 @@ Supplier (A_BusinessPartner)
     └── PostingBlockReason: "Quality issue"
 ```
 
-### Matching by Name
-
-Since invoices only have supplier names (not IDs), we match like:
-```sql
-SELECT * FROM Suppliers 
-WHERE name = invoice.supplier
-```
-
-In production, you'd use supplier IDs, but names work for this demo.
 
 ## Exercise 2.6 - Test Blocked Supplier Workflow
 
@@ -293,14 +283,6 @@ entity Invoices {
   supplier : Association to Suppliers.A_BusinessPartner;
 }
 ```
-
-### Local Development
-
-For local dev, CAP uses mock data. In production:
-- Configure SAP BTP destination
-- Connect to real S/4HANA system
-- Use OAuth2 authentication
-- CAP handles the rest!
 
 ## What You've Accomplished
 
