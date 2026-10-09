@@ -28,35 +28,26 @@ This helps Maria identify issues like:
 
 SAP provides pre-built data products that you can import into CAP.
 
-1. Make sure you're in the project root:
+1. On the root folder of this exercise you can find the file sap-s4com-Supplier-v1.json.
+
+2. Download the file.
+
+3. Copy the file to your project root.
+
+4. Go back to VSCode and make sure you're in the project root in your terminal:
 ```bash
 pwd
 # Should show: .../invoice-matching
 ```
 
-2. Download the supplier data product file from the exercise folder:
-
-**Option A - Copy from workshop materials:**
-```bash
-cp /path/to/workshop/exercises/ex2/sap-s4com-Supplier-v1.json .
-```
-
-**Option B - Download from repository:**
-If you cloned the workshop repository, the file is in `exercises/ex2/`:
-```bash
-cp ../exercises/ex2/sap-s4com-Supplier-v1.json .
-```
-
-> **Note:** The file `sap-s4com-Supplier-v1.json` is provided in the workshop materials at `exercises/ex2/`. Copy it to your project root before proceeding.
-
-3. Verify the data product file exists:
+5. Verify the data product file exists:
 ```bash
 ls sap-s4com-Supplier-v1.json
 ```
 
 You should see the file listed.
 
-4. Import the data product:
+6. Import the data product:
 ```bash
 cds import --data-product sap-s4com-Supplier-v1.json
 ```
@@ -67,7 +58,7 @@ This command:
 - Sets up service references
 - Configures API metadata
 
-4. Check what was imported:
+7. Check what was imported:
 ```bash
 ls apis/imported/
 ```
