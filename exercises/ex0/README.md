@@ -316,4 +316,4 @@ In this exercise, you:
 **Lines of code written:** ~0 (AI did it all!)  
 **Lines of code reviewed:** ~200-300
 
-Next up: Building the React UI in Exercise 1! 🚀
+Next up: [Exercise 1 - Build React UI](../ex1/README.md) in Exercise 1! 🚀
