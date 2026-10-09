@@ -65,7 +65,6 @@ ls apis/imported/
 
 You should see a folder for the Business Partner API (Supplier is part of this).
 
-<br>![Data Product Import](/exercises/ex2/images/02_01_0010.png)
 
 ## Exercise 2.2 - Add Supplier Details with Claude
 
