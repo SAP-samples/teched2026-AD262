@@ -152,7 +152,7 @@ You should see:
 - **Right Panel:** List of open purchase orders
 - **Bottom Section:** "Pending Decisions" (empty initially)
 
-<br>![Invoice Matching UI](/exercises/ex1/images/01_01_0010.png)
+
 
 ## Exercise 1.5 - Test the Workflow
 
@@ -169,7 +169,7 @@ What happens:
 - A new entry appears in "Pending Decisions"
 - The decision shows as status "proposed"
 
-<br>![Record Match](/exercises/ex1/images/01_05_0010.png)
+
 
 ### Step 2: Approve a Match
 
@@ -180,7 +180,7 @@ What happens:
 - The decision status updates to "approved"
 - It remains in the list (approved decisions stay closed)
 
-<br>![Approve Match](/exercises/ex1/images/01_05_0020.png)
+
 
 ### Step 3: Test Reject Workflow
 
@@ -192,7 +192,7 @@ What happens:
 - The invoice reappears in the left panel (status back to "open")
 - The PO reappears in the right panel (isOpen back to true)
 
-<br>![Reject Match](/exercises/ex1/images/01_05_0030.png)
+
 
 ## Exercise 1.6 - Understand the OData Integration
 
