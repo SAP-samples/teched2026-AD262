@@ -203,7 +203,7 @@ This is AI-powered AP processing!
 Copy this exact prompt into Claude:
 
 ```
-/cap-developer Generate additional sample data where the amount is not exactly matching of the inovices and purchase orders. Amounts should diverge between 2-10%.
+/cap-developer Generate additional sample data where the amount is not exactly matching of the inovices and purchase orders. Amounts should diverge between 2-10%. One invoice should have an identifier INV-TEST-001
 ```
 
 ## Exercise 5.6 - Create AP Domain Policy Skill
