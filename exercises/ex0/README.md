@@ -73,10 +73,14 @@ claude
 ### Plugin: Claude Code
 In this exercise we are using the [CAP SKills library](https://github.com/capire/skills). A shared library of reusable skills, agents, and prompts for the team. Compatible with OpenCode, Claude Code, and other AI coding tools that follow the open standards.
 
-Inside Claude Code, run:
+Inside Claude Code, add the plugin:
 
 ```bash
-/plugin marketplace add https://github.tools.sap/cap/skills.git
+/plugin marketplace add capire/skills
+```
+
+And install it:
+```bash
 /plugin install cap-developer@cap
 ```
 
