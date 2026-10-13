@@ -134,7 +134,6 @@ For unmatched invoices, suggest the best PO match and explain why
 - Provides reasoning
 
 
-<br>![Match Analysis](/exercises/ex3/images/03_04_0010.png)
 
 ## Exercise 3.5 - Understand What's Happening
 
