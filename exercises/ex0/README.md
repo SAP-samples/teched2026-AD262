@@ -79,7 +79,7 @@ Inside Claude Code, add the plugin:
 /plugin marketplace add capire/skills
 ```
 
-And install it:
+And install it. While installing select "project scope":
 ```bash
 /plugin install cap-developer@cap
 ```
