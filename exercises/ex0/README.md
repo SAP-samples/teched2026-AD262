@@ -211,7 +211,7 @@ Each decision records Maria's matching work:
 
 ### State Transitions
 
-The workflow enforces valid transitions:
+The workflow enforces valid transitions. You can find the implementation under srv/inoice-matching.cds
 ```
 proposed → approved ✓
 proposed → rejected ✓
