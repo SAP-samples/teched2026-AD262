@@ -168,27 +168,7 @@ Search for matches related to 'laptop computers'
 - "MacBook Pro" ✅
 - "Mobile workstations" ✅
 
-### Test 3: Office Supplies
 
-```
-Find matches for 'printing supplies'
-```
-
-**Expected matches:**
-- "Printer paper and toner" ✅
-- "Copy paper" ✅
-- "Ink cartridges" ✅
-
-### Test 4: Cloud Services
-
-```
-Search for 'cloud storage'
-```
-
-**Expected matches:**
-- "Cloud storage subscription" ✅
-- "Online backup service" ✅
-- "SaaS storage" ✅
 
 ## Exercise 4.5 - Understand Vector Embeddings
 
