@@ -151,7 +151,7 @@ Find all unmatched invoices and propose PO matches
 Now try to approve a match:
 
 ```
-Approve the match for invoice INV-001
+Approve the match for invoice 1
 ```
 
 **What happens:**
