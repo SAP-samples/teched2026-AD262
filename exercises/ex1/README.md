@@ -88,7 +88,7 @@ Claude will create a React application with:
 6. **CSS/Styling** - Basic styling for the panels
 
 Run cds watch and check the generated UI. It should look like this:
-<br>![Matching UI](/exercises/ex0/images/00_01_0030.png)
+<br>![Matching UI](/exercises/ex0/images/01_01_0030.png)
 
 ### Review the Generated Code
 
