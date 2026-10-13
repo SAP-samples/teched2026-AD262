@@ -102,7 +102,7 @@ Show me potential matches
 ### Test Prompt 2: Find Specific Invoice
 
 ```
-Show me details for invoices from Acme Corp
+Show me details for invoices from  Apex Office Supplies Ltd.
 ```
 
 **What happens:**
