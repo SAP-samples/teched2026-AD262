@@ -223,9 +223,9 @@ escalated → [final state] ✗
 
 ## Exercise 0.5 - Test Sample Data
 
-Let's verify the sample data is realistic and useful.
+Let's verify the sample data is realistic and useful. If your service is named differently than invoice-matching, replace the name in the url.
 
-1. In your browser, navigate to `http://localhost:4004/odata/v4/matching/Invoices`
+1. In your browser, navigate to `http://localhost:4004/odata/v4/invoice-matching/Invoices`
 
 2. Check that invoices have:
    - Different suppliers
@@ -233,7 +233,7 @@ Let's verify the sample data is realistic and useful.
    - Descriptive text (not just "Invoice 1")
    - All status = "open" (nothing matched yet)
 
-3. Navigate to `http://localhost:4004/odata/v4/matching/PurchaseOrders`
+3. Navigate to `http://localhost:4004/odata/v4/invoice-matching/PurchaseOrders`
 
 4. Check that POs have:
    - Same suppliers as invoices (some overlap)
