@@ -64,7 +64,7 @@ Now comes the exciting part - we'll use Claude to generate the complete applicat
 
 > 💡 **AI-Assisted Development**: Instead of manually writing hundreds of lines of code, you'll use a single Claude prompt to generate everything.
 
-Start Claude Code by entering claude in the terminal. 
+Start Claude Code by entering claude in the terminal, which is not running the preview. 
 
 ```bash
 claude
