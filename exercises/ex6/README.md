@@ -81,7 +81,7 @@ Copy this exact prompt into Claude:
 ```
 /cap-developer Add data-privacy and change-tracking annotations to the AP matching model.
 
-Treat the supplier as the data subject. Add an unmanaged association from Invoice to the S/4 Supplier, joined on supplier name. Use that association as the invoice's DataSubjectID so the audit-log plugin can reach the DataSubject; mark supplier name and description as personal data. Annotate Supplier itself as DataSubject.
+Treat the supplier as the data subject. Add an unmanaged association from Invoice to the S/4 Supplier, joined on supplier name. Use that association as the invoice's DataSubjectID so the audit-log plugin can reach the DataSubject; mark supplier name and description as personal data. Annotate Supplier itself as DataSubject. Annotate the inoice desciption as DataSubjectDetails.
 
 Enable change tracking on the decision's status, confidence, and rationale using the changelog annotation in the domain entity.
 ```
