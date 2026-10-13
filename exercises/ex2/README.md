@@ -168,31 +168,6 @@ Let's verify the supplier information appears correctly.
    - Should show blocking reason (e.g., "Quality issue - invoice dispute")
 
 
-### Check via OData
-
-1. Browse to `http://localhost:4004/odata/v4/matching/Invoices?$expand=supplier`
-
-2. Verify the response includes supplier data:
-```json
-{
-  "value": [
-    {
-      "ID": "...",
-      "supplier": "Acme Corp",
-      "amount": 1500.00,
-      "description": "Office supplies",
-      "status": "open",
-      "supplier": {
-        "name": "Acme Corp",
-        "paymentTerms": "NET30",
-        "isBlocked": false,
-        "blockReason": null
-      }
-    }
-  ]
-}
-```
-
 ## Exercise 2.5 - Understand Supplier Blocking
 
 Let's understand why blocking status matters.
