@@ -99,7 +99,7 @@ When Maria decides on a match she records it as a match decision – linking the
 
 The decision workflow should enforce valid transitions: a proposed match can be approved, rejected, or escalated; once approved it can only be escalated; rejected and escalated are final.
 
-Generate realistic sample data. Use SQLite for local dev.
+Generate realistic sample data. Use SQLite for local dev. Ensure to use cap status-flows https://cap.cloud.sap/docs/guides/services/status-flows
 ```
 
 Simply approve all changes. That's it. Do *not* switch on auto approve that you can follow the changes it does.
