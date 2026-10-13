@@ -203,7 +203,7 @@ This is AI-powered AP processing!
 Copy this exact prompt into Claude:
 
 ```
-/cap-developer Generate additional sample data where the amount is not exactly matching of the inovices and purchase orders. Amounts should diverge between 2-10%. One invoice should have an identifier INV-TEST-001
+/cap-developer Generate additional sample data where the amount is not exactly matching of the inovices and purchase orders. Amounts should diverge between 2-10%. One invoice should have an identifier INV-TEST-001. Another should have a blocked supplier called Beta Corp with a perfect match.
 ```
 
 ## Exercise 5.6 - Create AP Domain Policy Skill
@@ -327,40 +327,7 @@ Propose a match for invoice INV-TEST-001
 - Rationale: "Exact supplier match, amount within 2% tolerance (€1015 vs €1000)"
 - No escalation required
 
-### Test 2: Price Variance (2-5%)
 
-Test data:
-- Invoice: €1000.00
-- PO: €1040.00 (4% difference)
-
-Agent query:
-```
-Propose a match for invoice INV-TEST-002
-```
-
-**Expected behavior:**
-- Agent proposes the match
-- Confidence: MEDIUM
-- Rationale: "Exact supplier match, semantic description similarity 0.85. **Price variance: 4% (€1040 vs €1000) - requires price variance approval**"
-- Can be approved but needs justification
-
-### Test 3: Must Escalate (Over 5%)
-
-Test data:
-- Invoice: €1000.00
-- PO: €1080.00 (8% difference)
-
-Agent query:
-```
-Propose a match for invoice INV-TEST-003
-```
-
-**Expected behavior:**
-- Agent proposes with status 'proposed'
-- Confidence: LOW
-- Rationale: "Supplier match, description similar. **Price variance exceeds 5% (€1080 vs €1000) - must escalate, cannot auto-approve**"
-- Approval action blocked
-- Only escalate action available
 
 ### Test 4: Blocked Supplier
 
