@@ -87,6 +87,9 @@ Claude will create a React application with:
 5. **API utilities** - Functions to fetch and post data
 6. **CSS/Styling** - Basic styling for the panels
 
+Run cds watch and check the generated UI. It should look like this:
+<br>![Matching UI](/exercises/ex0/images/00_01_0030.png)
+
 ### Review the Generated Code
 
 Check these key features:
