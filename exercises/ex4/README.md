@@ -279,24 +279,6 @@ Now when Maria looks for matches:
 - Vector similarity
 - Real-world matching improvements
 
-## Troubleshooting
-
-
-### Issue: Embeddings not generating
-**Solution:** Check logs for errors:
-```bash
-cds watch --debug
-```
-
-### Issue: Similarity scores seem wrong
-**Solution:** Verify vector dimensions match model:
-```javascript
-// In package.json
-"ai": {
-  "model": "sentence-transformers/all-MiniLM-L6-v2",
-  "dimensions": 384  // Must match model!
-}
-```
 
 
 ## Optional Enhancements
