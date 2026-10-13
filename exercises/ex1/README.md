@@ -231,16 +231,6 @@ function App() {
 - ✅ Handler functions passed to child components
 - ✅ Re-fetch after mutations
 
-### Why No State Management Library?
-
-We kept it simple:
-- useState and useEffect are sufficient
-- No complex state synchronization needed
-- Easier to understand
-- Less boilerplate
-
-For larger apps, you might use Redux, Zustand, or Context API.
-
 ## What You've Accomplished
 
 ✅ Added React to your CAP project  
@@ -248,7 +238,6 @@ For larger apps, you might use Redux, Zustand, or Context API.
 ✅ Connected React to CAP OData services  
 ✅ Implemented invoice matching workflow  
 ✅ Tested record, approve, and reject flows  
-✅ Understood OData integration patterns
 
 ## Understanding What Happened
 
