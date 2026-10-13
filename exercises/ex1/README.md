@@ -197,57 +197,7 @@ What happens:
 
 
 
-## Exercise 1.6 - Understand the OData Integration
-
-Let's understand how the React UI connects to CAP.
-
-### Fetching Open Invoices
-
-The UI makes a request like:
-```
-GET /odata/v4/matching/Invoices?$filter=status eq 'open'
-```
-
-CAP returns JSON:
-```json
-{
-  "value": [
-    {
-      "ID": "...",
-      "supplier": "Acme Corp",
-      "amount": 1500.00,
-      "currency": "EUR",
-      "description": "Office supplies - paper and toner",
-      "status": "open"
-    }
-  ]
-}
-```
-
-### Creating a Match Decision
-
-When user clicks "Record Match", the UI posts:
-```
-POST /odata/v4/matching/MatchDecisions
-{
-  "invoice_ID": "invoice-uuid",
-  "purchaseOrder_ID": "po-uuid",
-  "confidence": 0.85,
-  "rationale": "Supplier and amount match",
-  "outcome": "proposed"
-}
-```
-
-### Calling Actions
-
-When user clicks "Approve", the UI calls:
-```
-POST /odata/v4/matching/MatchDecisions(decision-uuid)/approve
-```
-
-The service handler updates the status and returns success.
-
-## Exercise 1.7 - Explore the Code
+## Exercise 1.6 - Explore the Code
 
 Take a moment to understand what Claude generated.
 
