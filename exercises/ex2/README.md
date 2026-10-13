@@ -298,13 +298,8 @@ cat sap-s4com-Supplier-v1.json | jq .
 ```
 
 ### Issue: Supplier details not showing
-**Solution:** Check the association in schema.cds:
-```cds
-using { API_BUSINESS_PARTNER as Suppliers } from '../apis/imported';
-entity Invoices {
-  supplier : Association to Suppliers.A_BusinessPartner;
-}
-```
+**Solution:** Check the association in schema.cds
+
 
 ### Issue: No blocked suppliers in data
 **Solution:** Ask Claude to add one:
