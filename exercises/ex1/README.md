@@ -24,7 +24,7 @@ Maria's invoice matching interface with:
 
 CAP provides a convenient command to add React applications.
 
-1. Make sure you're in your project root:
+1. Stop the preview on your right terminal and ensure you are in your main project folder:
 ```bash
 pwd
 # Should show: .../invoice-matching
