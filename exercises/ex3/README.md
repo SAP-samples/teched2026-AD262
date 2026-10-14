@@ -1,4 +1,4 @@
-# Exercise 3 - Add MCP Server
+# Exercise 3 - Add MCP Adapter
 
 In this exercise, you will expose your matching service over the Model Context Protocol (MCP), making it accessible to AI agents like Claude.
 
@@ -6,7 +6,7 @@ In this exercise, you will expose your matching service over the Model Context P
 
 By the end of this exercise, you will:
 - Understand what MCP is and why it matters
-- Install the CAP MCP package
+- Install the CAP MCP Adapter
 - Expose your service over MCP
 - Configure Claude Desktop to connect
 - Query your business data conversationally
