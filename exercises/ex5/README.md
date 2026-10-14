@@ -33,8 +33,6 @@ An **AI agent** is an AI system that can:
 | **Workflow** | User drives | Agent drives |
 | **Human Approval** | Not built-in | Configurable gates |
 
-**MCP:** "Claude, show me potential matches" → Claude queries and displays
-**Agent:** "Find and approve matches" → Agent plans, executes, asks for approval
 
 ## Exercise 5.1 - Install Agent Package
 
