@@ -446,7 +446,7 @@ The annotations help:
 - Data subject relationships
 - Compliance requirements
 
-## Troubleshooting
+<details><summary><h2>Troubleshooting</h2></summary>
 
 ### Issue: Audit logs not appearing
 **Solution:** Check package.json configuration:
@@ -462,17 +462,12 @@ The annotations help:
 cds deploy --to sqlite
 ```
 
-### Issue: Data subject not identified
-**Solution:** Verify the unmanaged association:
-```cds
-supplierData : Association to one Suppliers on supplierData.name = supplier;
-```
-
 ### Issue: Change history is empty
 **Solution:** Ensure @changelog annotation is present.
 
+</details>
 
-## Optional Enhancements
+<details><summary><h2>Optional Enhancements (can be skipped onsite at TechEd)</h2></summary>
 
 ### Add Audit Dashboard
 
@@ -497,6 +492,8 @@ Send alerts when high-risk operations occur (e.g., mass deletions, bulk approval
 ```
 After retention period, anonymize personal data while keeping audit trail
 ```
+
+</details>
 
 ## Real-World Use Cases
 

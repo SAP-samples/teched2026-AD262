@@ -374,24 +374,24 @@ Let's understand how the agent works.
 
 ```
 ┌─────────────────────────────────────────┐
-│         User (Maria)                     │
+│         User (Maria)                    │
 │  "Find unmatched invoices and match"    │
 └───────────────┬─────────────────────────┘
                 │
                 ↓
 ┌─────────────────────────────────────────┐
-│         Agent Brain (LLM)                │
-│  - Understands intent                    │
-│  - Plans multi-step workflow             │
-│  - Applies skills/policies               │
+│         Agent Brain (LLM)               │
+│  - Understands intent                   │
+│  - Plans multi-step workflow            │
+│  - Applies skills/policies              │
 └───────────────┬─────────────────────────┘
                 │
                 ↓
 ┌─────────────────────────────────────────┐
-│         Skills Layer                     │
-│  - AP Domain Policy                      │
-│  - Business Rules                        │
-│  - Confidence Rubric                     │
+│         Skills Layer                    │
+│  - AP Domain Policy                     │
+│  - Business Rules                       │
+│  - Confidence Rubric                    │
 └───────────────┬─────────────────────────┘
                 │
                 ↓
@@ -462,7 +462,26 @@ Agent wants to: Approve match
 - Human-in-the-loop patterns
 - Confidence scoring
 
-## Troubleshooting
+
+## Agent Best Practices
+
+### Do's ✅
+
+1. **Encode domain knowledge in skills** - Don't expect the agent to know your business
+2. **Require approval for risky actions** - Approvals, deletions, financial commitments
+3. **Provide clear rationales** - Help humans understand agent reasoning
+4. **Set confidence thresholds** - Low confidence → escalate
+5. **Test edge cases** - Blocked suppliers, large amounts, etc.
+
+### Don'ts ❌
+
+1. **Don't auto-approve everything** - Keep humans in critical loops
+2. **Don't skip rationales** - "Trust me" doesn't work for auditors
+3. **Don't ignore business rules** - Amount limits, blocking rules, etc.
+4. **Don't allow unbounded actions** - Set limits on batch operations
+5. **Don't forget audit trails** - Every agent action should be logged
+
+<details><summary><h2>Troubleshooting</h2></summary>
 
 ### Issue: Agent UI doesn't load
 **Solution:** Check the URL and ensure CAP server is running:
@@ -487,26 +506,9 @@ this.on('agent:plan', async (req) => {
 ### Issue: Agent makes wrong decisions
 **Solution:** Review and adjust the skill rules. The agent follows the policy you encode!
 
-## Agent Best Practices
+</details>
 
-### Do's ✅
-
-1. **Encode domain knowledge in skills** - Don't expect the agent to know your business
-2. **Require approval for risky actions** - Approvals, deletions, financial commitments
-3. **Provide clear rationales** - Help humans understand agent reasoning
-4. **Set confidence thresholds** - Low confidence → escalate
-5. **Test edge cases** - Blocked suppliers, large amounts, etc.
-
-### Don'ts ❌
-
-1. **Don't auto-approve everything** - Keep humans in critical loops
-2. **Don't skip rationales** - "Trust me" doesn't work for auditors
-3. **Don't ignore business rules** - Amount limits, blocking rules, etc.
-4. **Don't allow unbounded actions** - Set limits on batch operations
-5. **Don't forget audit trails** - Every agent action should be logged
-
-## Optional Enhancements
-
+<details><summary><h2>Optional Enhancements (can be skipped onsite at TechEd)</h2></summary>
 ### Add More Skills
 
 ```
@@ -530,7 +532,7 @@ Add a skill for batch matching with confirmation after every 10 matches
 ```
 Track when Maria overrides agent recommendations and adjust confidence scoring
 ```
-
+</details>
 
 ## Next Steps
 

@@ -259,7 +259,7 @@ function App() {
 - OData integration with CAP
 - State management basics
 
-## Troubleshooting
+<details><summary><h2>Troubleshooting</h2></summary>
 
 ### Issue: React app won't start
 **Solution:** Check dependencies installed:
@@ -282,8 +282,9 @@ npm install
 ```
 Can you provide the CSS for the invoice matching UI?
 ```
+</details>
 
-## Optional Enhancements
+<details><summary><h2>Optional Enhancements (can be skipped onsite at TechEd)</h2></summary>
 
 Want to customize the UI? Try these prompts:
 
@@ -306,6 +307,7 @@ When recording a match, let Maria set the confidence level with a slider (0-100%
 ```
 Add a "History" tab showing all approved and rejected decisions
 ```
+<details>
 
 ## Next Steps
 

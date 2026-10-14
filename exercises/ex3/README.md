@@ -28,7 +28,7 @@ The **Model Context Protocol (MCP)** is an open standard that enables AI applica
 - ✅ Automatic - CAP entities become MCP tools
 - ✅ No custom API - reuse existing OData services
 
-## Exercise 3.1 - Install MCP Package
+## Exercise 3.1 - Install MCP Adapter
 
 Let's add MCP support to your CAP application.
 
@@ -38,14 +38,14 @@ pwd
 # Should show: .../invoice-matching
 ```
 
-2. Install the CAP MCP package:
+2. Install the CAP MCP adapter:
 ```bash
 npm add @cap-js/mcp
 ```
 
-This adds MCP capabilities to your CAP server.
+This adds MCP capabilities to your CAP service.
 
-3. Restart the CAP server:
+3. Restart the CAP service:
 ```bash
 cds watch
 ```
@@ -251,20 +251,7 @@ Claude will join supplier data and filter.
 - How AI can query business data
 - The power of conversational interfaces
 
-## Troubleshooting
 
-
-### Issue: Claude can't see data
-**Solution:** Ensure CAP server is running:
-```bash
-cd /path/to/invoice-matching
-cds watch
-```
-
-Open localhost:4004 and check if the mcp protocol is served.
-
-### Issue: Permission errors
-**Solution:** MCP runs with file system permissions. Check that your user can read the project directory.
 
 ## Security Considerations
 
@@ -288,7 +275,23 @@ MCP exposes:
 3. **Audit logging** - track all MCP access (we'll add this in Ex 6)
 4. **Rate limiting** - configure request throttling
 
-## Optional Enhancements
+<details><summary><h2>Troubleshooting</h2></summary>
+
+### Issue: Claude can't see data
+**Solution:** Ensure CAP server is running:
+```bash
+cd /path/to/invoice-matching
+cds watch
+```
+
+Open localhost:4004 and check if the mcp protocol is served.
+
+### Issue: Permission errors
+**Solution:** MCP runs with file system permissions. Check that your user can read the project directory.
+
+</details>
+
+<details><summary><h2>Optional Enhancements (can be skipped onsite at TechEd)</h2></summary>
 
 
 ### Add Descriptions
@@ -302,6 +305,7 @@ Add detailed descriptions to each MCP tool so Claude understands when to use the
 ```
 Create MCP resources for common queries like "unmatched-invoices" and "pending-decisions"
 ```
+</details>
 
 ## Next Steps
 

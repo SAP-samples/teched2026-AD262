@@ -281,7 +281,7 @@ Now when Maria looks for matches:
 
 
 
-## Optional Enhancements
+<details><summary><h2>Optional Enhancements (can be skipped onsite at TechEd)</h2></summary>
 
 ### Multi-language Support
 
@@ -306,6 +306,7 @@ When showing semantic matches, explain which words/phrases drove the similarity
 ```
 Combine semantic search with exact keyword matching for optimal results
 ```
+</details>
 
 ## Next Steps
 

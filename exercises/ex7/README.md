@@ -185,7 +185,7 @@ No code changes are needed — the same annotations drive both local mock and pr
 - Works identically on SAP HANA and SQLite
 - Same model in local dev and production — only the binding changes
 
-## Troubleshooting
+<details><summary><h2>Troubleshooting</h2></summary>
 
 ### Plugin not loading
 
@@ -223,6 +223,8 @@ Check that your AI Core instance has the `foundation-models` scenario enabled an
   }
 }
 ```
+
+</details>
 
 ## Summary
 

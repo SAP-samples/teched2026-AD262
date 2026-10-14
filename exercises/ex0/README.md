@@ -89,17 +89,24 @@ And install it. While installing select "project scope":
 Copy this exact prompt into Claude:
 
 ```
-/cap-developer Build a CAP app for Maria, an AP clerk who matches incoming supplier invoices to open purchase orders before releasing payment.
+/cap-developer Build a CAP app for Maria, an AP clerk who matches incoming supplier invoices 
+to open purchase orders before releasing payment.
 
-She needs to see her invoices and the open POs side by side. Each invoice has a supplier, an amount with currency, a short description, and a status (open, matched, or escalated). She can also see which PO it's been matched to, if any.
+She needs to see her invoices and the open POs side by side. Each invoice has a supplier, an amount 
+with currency, a short description, and a status (open, matched, or escalated). She can also see which PO it's been matched to, if any.
 
 Purchase orders have a supplier, a line item description, an amount, and a flag for whether they're still open.
 
-When Maria decides on a match she records it as a match decision – linking the invoice and the PO, noting her confidence, a rationale, and the outcome (proposed, approved, rejected, or escalated). The system should track who made the decision and when.
+When Maria decides on a match she records it as a match decision – linking the invoice and the PO, 
+noting her confidence, a rationale, and the outcome (proposed, approved, rejected, or escalated). 
+The system should track who made the decision and when.
 
-The decision workflow should enforce valid transitions: a proposed match can be approved, rejected, or escalated; once approved it can only be escalated; rejected and escalated are final.
+The decision workflow should enforce valid transitions: a proposed match can be approved, rejected, 
+or escalated; once approved it can only be escalated; rejected and escalated are final.
 
-Generate realistic sample data. Use SQLite for local dev. Ensure to use cap status-flows https://cap.cloud.sap/docs/guides/services/status-flows
+Generate realistic sample data. Use SQLite for local dev. 
+Ensure to use cap status-flows https://cap.cloud.sap/docs/guides/services/status-flows 
+and the new case when assert constraints when possible https://cap.cloud.sap/docs/guides/services/constraints#assert-constraint
 ```
 
 Simply approve all changes. That's it. Do *not* switch on auto approve that you can follow the changes it does.
@@ -126,38 +133,30 @@ Claude should generate:
    - CSV files with matching purchase orders
    - Test data for development
 
-### Review the Generated Code
+<details><summary><h2>Optional: Review the AI generated code</h2></summary>
 
-Before saving, review what Claude generated:
+Review what Claude generated:
 
-**Check the Data Model:**
-- ✅ Does it have Invoices, PurchaseOrders, and MatchDecisions?
-- ✅ Are there proper associations between entities?
-- ✅ Does it include managed aspects (createdAt, modifiedAt, etc.)?
+**Check the Data Model:**<br>
+✅ Does it have Invoices, PurchaseOrders, and MatchDecisions?<br>
+✅ Are there proper associations between entities?<br>
+✅ Does it include managed aspects (createdAt, modifiedAt, etc.)?<br>
 
-**Check the Service:**
-- ✅ Are all entities exposed?
-- ✅ Are there actions for approve, reject, escalate?
-- ✅ Is the service implementation included?
+**Check the Service:**<br>
+✅ Are all entities exposed?<br>
+✅ Are there actions for approve, reject, escalate?<br>
+✅ Is the service implementation included?<br>
 
-**Check the Sample Data:**
-- ✅ Are there CSV files for each entity?
-- ✅ Do the descriptions vary (to test semantic search later)?
-- ✅ Are amounts similar but not identical?
+**Check the Sample Data:**<br>
+✅ Are there CSV files for each entity?<br>
+✅ Do the descriptions vary (to test semantic search later)?<br>
+✅ Are amounts similar but not identical?<br>
 
-### Save the Generated Code
-
-1. Create the files as Claude suggests (usually):
-   - `db/schema.cds`
-   - `srv/matching-service.cds`
-   - `srv/matching-service.js`
-   - `db/data/` CSV files
-
-2. Save each file in your project
+</details>
 
 ## Exercise 0.3 - Preview and Test
 
-This creates the SQLite database and loads the sample data.
+This CAP application and loads the sample data.
 
 1. If you ended the preview simply start the CAP server again. If it is still running in the other terminal skip this step.
 ```bash
@@ -272,6 +271,7 @@ Let's verify the sample data is realistic and useful. If your service is named d
 - How to describe business requirements to AI
 - How to review AI-generated code
 - The structure of a CAP application
+- Usage of the CAP Skills library
 
 <details><summary><h2>Troubleshooting</h2></summary>
 
@@ -311,12 +311,12 @@ Now that you have a working CAP application with data, you're ready to build the
 
 ## Summary
 
-In this exercise, you:
-- ✅ Created a CAP project structure
-- ✅ Used AI including CAP Skills Library to generate a complete application
-- ✅ Learned about invoice matching workflows
-- ✅ Deployed sample data
-- ✅ Understood state transitions
+In this exercise, you:<br>
+✅ Created a CAP project structure<br>
+✅ Used AI including CAP Skills Library to generate a complete application<br>
+✅ Learned about invoice matching workflows<br>
+✅ Deployed sample data<br>
+✅ Understood state transitions
 
 **Time spent:** ~20 minutes  
 **Lines of code written:** ~0 (AI did it all!)  
