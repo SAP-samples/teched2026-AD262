@@ -273,7 +273,7 @@ Let's verify the sample data is realistic and useful. If your service is named d
 - How to review AI-generated code
 - The structure of a CAP application
 
-## Troubleshooting
+<details><summary><h2>Troubleshooting</h2></summary>
 
 ### Issue: `cds` command not found
 **Solution:** Install CAP Development Kit:
@@ -298,6 +298,8 @@ cds compile db/schema.cds --to sql
 ```
 I got this error: [paste error]. Please fix the code.
 ```
+
+</details>
 
 ## Next Steps
 
