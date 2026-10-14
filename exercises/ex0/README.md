@@ -6,7 +6,7 @@ In this exercise, you will initialize a CAP project and use Claude to generate a
 
 By the end of this exercise, you will:
 - Initialize a CAP project with Node.js and SQLite
-- Use Claude with the [CAP SKills library](https://github.com/capire/skills) to generate a complete data model
+- Use Claude with the [CAP Skills library](https://github.com/capire/skills) to generate a complete data model
 - Understand workflow state transitions
 - Have realistic sample data ready to use
 
