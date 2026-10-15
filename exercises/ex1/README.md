@@ -1,4 +1,4 @@
-# Exercise 1 - Build React UI
+# Exercise 1 — Build React UI
 
 In this exercise, you will use Claude to generate a complete React user interface for Maria's invoice matching workflow.
 
@@ -16,49 +16,50 @@ By the end of this exercise, you will:
 Maria's invoice matching interface with open invoices, purchase orders and proposed matched that looks like this:
 <br>![Matching UI](/exercises/ex1/images/01_01_0030.png)
 
-## Exercise 1.1 - Add React to Your CAP Project
+## Exercise 1.1 — Add React to Your CAP Project
 
 CAP provides a convenient command to add React applications.
 
-1. Stop the preview on your right terminal and ensure you are in your main project folder:
+👉 Stop the preview on your right terminal and ensure you are in your main project folder:
 ```bash
 pwd
 # Should show: .../invoice-matching
 ```
 
-2. Add React application:
+👉 Add React application:
 ```bash
 cds add react --into matching
 ```
 
 This creates a new React app in the `app/matching/` directory.
 
-3. Navigate to the React app:
+👉 Navigate to the React app:
 ```bash
 cd app/matching
 ```
 
-4. Install dependencies:
+👉 Install dependencies:
 ```bash
 npm install
 ```
 
-5. Go back to project root:
+👉 Go back to project root:
 ```bash
 cd ../..
 ```
 
-## Exercise 1.2 - Generate the UI with Claude
+## Exercise 1.2 — Generate the UI with Claude
 
 Now we'll use Claude to generate the complete React UI!
 
-> 💡 **AI-Assisted Development**: Claude will generate a complete, working UI from a single prompt describing Maria's needs.
+> [!TIP]
+> Claude will generate a complete, working UI from a single prompt describing Maria's needs.
 
 ### The Claude Prompt
 
-Copy this exact prompt into Claude:
+👉 Copy this exact prompt into Claude:
 
-```
+```text
 Build Maria's invoice matching UI in app/matching/.
 
 Left panel: list of open invoices (supplier, amount, description). Right panel: list of open purchase orders 
@@ -89,7 +90,7 @@ Claude will create a React application with:
 5. **API utilities** - Functions to fetch and post data
 6. **CSS/Styling** - Basic styling for the panels
 
-Run cds watch and check the generated UI. It should look like this:
+👉 Run `cds watch` and check the generated UI. It should look like this:
 <br>![Matching UI](/exercises/ex1/images/01_01_0030.png)
 
 <details><summary><h2>Optional: Review the AI generated code</h2></summary>
@@ -120,13 +121,13 @@ Check these key features:
 
 </details>
 
-## Exercise 1.3 - Update CAP Service for UI Actions
+## Exercise 1.3 — Update CAP Service for UI Actions
 
 We need to ensure the service implementation supports the UI actions.
 
-Ask Claude to verify/generate the service implementation:
+👉 Ask Claude to verify/generate the service implementation:
 
-```
+```text
 Make sure srv/matching-service.js has these implementations:
 1. When a match is created with status "proposed", mark the invoice as "matched" and set PO isOpen to false
 2. Action "approve" changes match outcome to "approved"  
@@ -136,16 +137,16 @@ Make sure srv/matching-service.js has these implementations:
 
 Claude will update or create the proper service handlers.
 
-## Exercise 1.4 - Run the Application
+## Exercise 1.4 — Run the Application
 
 Time to see it in action!
 
-1. Start the CAP server (from project root):
+👉 Start the CAP server (from project root):
 ```bash
 cds watch
 ```
 
-2. Open your browser at `http://localhost:4004` and open the generated UI.
+👉 Open your browser at `http://localhost:4004` and open the generated UI.
 
 You should see:
 - **Left Panel:** List of open invoices
@@ -154,15 +155,17 @@ You should see:
 
 
 
-## Exercise 1.5 - Test the Workflow
+## Exercise 1.5 — Test the Workflow
 
 Let's test Maria's matching workflow!
 
 ### Step 1: Record a Match
 
-1. **Select an invoice** from the left panel (it should highlight)
-2. **Select a PO** from the right panel (it should highlight)
-3. **Click "Record Match"** button
+👉 Select an invoice from the left panel (it should highlight).
+
+👉 Select a PO from the right panel (it should highlight).
+
+👉 Click "Record Match" button.
 
 What happens:
 - Both items disappear from the open lists
@@ -173,8 +176,7 @@ What happens:
 
 ### Step 2: Approve a Match
 
-1. In the "Pending Decisions" section, find your match
-2. **Click "Approve"** button
+👉 In the "Pending Decisions" section, find your match and click "Approve".
 
 What happens:
 - The decision status updates to "approved"
@@ -184,8 +186,9 @@ What happens:
 
 ### Step 3: Test Reject Workflow
 
-1. Record another match (select invoice + PO)
-2. This time, **click "Reject"** in pending decisions
+👉 Record another match (select invoice + PO).
+
+👉 This time, click "Reject" in pending decisions.
 
 What happens:
 - The decision status updates to "rejected"
@@ -196,11 +199,11 @@ What happens:
 
 ## What You've Accomplished
 
-✅ Added React to your CAP project  
-✅ Generated a complete UI with Claude  
-✅ Connected React to CAP OData services  
-✅ Implemented invoice matching workflow  
-✅ Tested record, approve, and reject flows  
+- Added React to your CAP project
+- Generated a complete UI with Claude
+- Connected React to CAP OData services
+- Implemented invoice matching workflow
+- Tested record, approve, and reject flows
 
 ## Understanding What Happened
 
@@ -241,7 +244,7 @@ npm install
 
 ### Issue: Styling looks broken
 **Solution:** Ask Claude to provide the CSS:
-```
+```text
 Can you provide the CSS for the invoice matching UI?
 ```
 </details>
@@ -251,22 +254,22 @@ Can you provide the CSS for the invoice matching UI?
 Want to customize the UI? Try these prompts:
 
 ### Add Search/Filter
-```
+```text
 Add a search box above each panel to filter by supplier name or description
 ```
 
 ### Improve Styling
-```
+```text
 Make the UI look more professional with better spacing, colors, and hover effects
 ```
 
 ### Add Confidence Slider
-```
+```text
 When recording a match, let Maria set the confidence level with a slider (0-100%)
 ```
 
 ### Show Match History
-```
+```text
 Add a "History" tab showing all approved and rejected decisions
 ```
 </details>
@@ -275,22 +278,21 @@ Add a "History" tab showing all approved and rejected decisions
 
 Now that Maria can see and match invoices manually, let's add supplier information from S/4HANA!
 
-**Continue to [Exercise 2 - Add Supplier Data](../ex2/README.md)** to integrate the Supplier data product.
+**Continue to [Exercise 2 — Add Supplier Data](../ex2/README.md)** to integrate the Supplier data product.
 
 ---
 
 ## Summary
 
-In this exercise, you:<br>
-✅ Generated a complete React UI with AI<br>
-✅ Built a split-panel matching interface<br>
-✅ Implemented workflow state transitions<br>
-✅ Connected React to CAP OData<br>
-✅ Tested the full matching workflow<br>
+In this exercise, you:
+- Generated a complete React UI with AI
+- Built a split-panel matching interface
+- Implemented workflow state transitions
+- Connected React to CAP OData
+- Tested the full matching workflow
 
 **Time spent:** ~20 minutes  
 **React components written:** ~0 (Claude did it!)  
-**React components reviewed:** ~4-5  
-**Working UI:** ✅ Complete!
+**React components reviewed:** ~4-5
 
-Maria can now match invoices visually! Next: Adding supplier details. 🚀
+[Next exercise](../ex2/README.md)

@@ -1,4 +1,4 @@
-# Exercise 2 - Add Supplier Data
+# Exercise 2 — Add Supplier Data
 
 In this exercise, you will import the S/4HANA Supplier data product and integrate supplier information into Maria's UI so she can spot problems before releasing payment.
 
@@ -19,39 +19,28 @@ Enhanced invoice matching with supplier insights:
 - **Posting Block:** Whether supplier is blocked
 - **Block Reason:** Why they're blocked (if applicable)
 
-This helps Maria identify issues like:<br>
-❌ Supplier blocked for posting<br>
-⚠️ Unusual payment terms<br>
-✅ Verified supplier ready for payment<br>
+This helps Maria identify issues like blocked suppliers, unusual payment terms, and verified suppliers ready for payment.
 
-## Exercise 2.1 - Import the Supplier Data Product
+## Exercise 2.1 — Import the Supplier Data Product
 
 SAP provides pre-built data products that you can import into CAP.
 
-1. On the root folder of this exercise you can find the file sap-s4com-Supplier-v1.json.
+👉 On the root folder of this exercise you can find the file `sap-s4com-Supplier-v1.json`. Download it and copy it to your project root.
 
-2. Download the file.
-
-3. Copy the file to your project root.
-
-4. Go back to VSCode and make sure you're in the project root in your terminal:
+👉 Make sure you're in the project root in your terminal:
 ```bash
 pwd
 # Should show: .../invoice-matching
 ```
 
-5. Import the data product:
+👉 Import the data product:
 ```bash
 cds import --data-product sap-s4com-Supplier-v1.json
 ```
 
-This command:
-- Analyzes the data product schema
-- Creates CDS definitions in `apis/imported/`
-- Sets up service references
-- Configures API metadata
+This command analyzes the data product schema, creates CDS definitions in `apis/imported/`, sets up service references, and configures API metadata.
 
-6. Check what was imported:
+👉 Check what was imported:
 ```bash
 ls apis/imported/
 ```
@@ -59,18 +48,19 @@ ls apis/imported/
 You should see a folder for the Business Partner API (Supplier is part of this).
 
 
-## Exercise 2.2 - Add Supplier Details with Claude
+## Exercise 2.2 — Add Supplier Details with Claude
 
 Now we'll enhance the application to show supplier information.
 
-> 💡 **AI-Assisted Development**: Claude will integrate the supplier data product and update the UI in one prompt.
+> [!TIP]
+> Claude will integrate the supplier data product and update the UI in one prompt.
 
 ### The Claude Prompt
 
-Copy this exact prompt into Claude:
+👉 Copy this exact prompt into Claude:
 
-```
- /cap-add-remote-service  The Supplier data product is imported under apis/imported/. For each invoice Maria reviews, I want to see key details about that supplier alongside it, so she can spot problems before releasing payment.
+```text
+/cap-add-remote-service  The Supplier data product is imported under apis/imported/. For each invoice Maria reviews, I want to see key details about that supplier alongside it, so she can spot problems before releasing payment.
 
 Add a supplier details section to each invoice showing:
 - the supplier's name
@@ -130,34 +120,30 @@ Check these key features:
 
 </details>
 
-## Exercise 2.3 - Test the updated Schema
+## Exercise 2.3 — Test the Updated Schema
 
-Now it is time to test the updated schema. In case the preview is still running stop it with STRG+c.
+Now it is time to test the updated schema. In case the preview is still running stop it with `Ctrl+C`.
 
-1. Restart the CAP server:
+👉 Restart the CAP server:
 ```bash
 cds watch
 ```
 
-## Exercise 2.4 - Test Supplier Integration
+## Exercise 2.4 — Test Supplier Integration
 
 Let's verify the supplier information appears correctly.
 
-### Check in Browser
+👉 Open the UI at `http://localhost:4004`.
 
-1. Open the UI at `http://localhost:4004`
+Look at the invoice list — each invoice should now show:
+- Supplier name
+- Payment terms (e.g., "NET30")
+- Blocking status indicator
 
-2. Look at the invoice list - each invoice should now show:
-   - Supplier name
-   - Payment terms (e.g., "NET30")
-   - Blocking status indicator
-
-3. Find a blocked supplier:
-   - Should have a ⚠️ warning icon or red indicator
-   - Should show blocking reason (e.g., "Quality issue - invoice dispute")
+👉 Find a blocked supplier in the list. It should have a warning icon or red indicator and show the blocking reason (e.g., "Quality issue - invoice dispute").
 
 
-## Exercise 2.5 - Understand Supplier Blocking
+## Exercise 2.5 — Understand Supplier Blocking
 
 Let's understand why blocking status matters.
 
@@ -169,14 +155,11 @@ Suppliers get blocked for posting when:
 - **Legal holds:** Pending legal matters
 - **Compliance issues:** Failed audits or certifications
 
-Maria needs to know because:
-- ❌ Can't release payment to blocked supplier
-- ⚠️ Need to escalate or resolve the block first
-- 📋 May need approval from procurement
+Maria needs to know because she can't release payment to a blocked supplier, needs to escalate or resolve the block first, and may need approval from procurement.
 
 ### The Data Structure
 
-```
+```text
 Supplier (A_BusinessPartner)
 └── Company Code Records (A_SupplierCompany)
     ├── PaymentTerms: "NET30"
@@ -185,24 +168,21 @@ Supplier (A_BusinessPartner)
 ```
 
 
-## Exercise 2.6 - Test Blocked Supplier Workflow
+## Exercise 2.6 — Test Blocked Supplier Workflow
 
 Let's see what happens when Maria tries to match an invoice with a blocked supplier.
 
-1. **Find a blocked supplier invoice** in the left panel
-   - Should show ⚠️ warning and block reason
+👉 Find a blocked supplier invoice in the left panel — it should show a warning and block reason.
 
-2. **Try to select it** and match with a PO
-
-3. **Observe the behavior:**
-   - UI might show a warning message
-   - Or allow the match but flag it for escalation
-   - Depends on how Claude implemented it
+👉 Try to select it and match with a PO, then observe the behavior:
+- UI might show a warning message
+- Or allow the match but flag it for escalation
+- Depends on how Claude implemented it
 
 **Expected Business Logic:**
-- ⚠️ Match can be recorded but must be escalated
-- ❌ Match cannot be approved until block is resolved
-- 📋 Rationale should mention the blocking reason
+- Match can be recorded but must be escalated
+- Match cannot be approved until block is resolved
+- Rationale should mention the blocking reason
 
 
 <details><summary><h2>Optional: Explore Data Product Patterns</h2></summary>
@@ -218,11 +198,7 @@ A **data product** is a packaged, reusable API specification that includes:
 - Authentication requirements
 - Documentation
 
-SAP provides many data products from:
-- S/4HANA Cloud
-- SuccessFactors
-- Ariba
-- Concur
+SAP provides many data products from S/4HANA Cloud, SuccessFactors, Ariba, and Concur.
 
 ### How CAP Imports Data Products
 
@@ -233,7 +209,7 @@ cds import --data-product <file.json>
 This creates:
 - `apis/imported/<service>/` folder
 - CDS definitions from OData metadata
-- Service references in package.json
+- Service references in `package.json`
 - Mock data configurations
 
 ### Using Imported Services
@@ -253,12 +229,12 @@ entity Invoices {
 
 ## What You've Accomplished
 
-✅ Imported S/4HANA Supplier data product  
-✅ Integrated external data with your app  
-✅ Added supplier details to UI  
-✅ Implemented blocked supplier warnings  
-✅ Created realistic mock supplier data  
-✅ Understood data product patterns
+- Imported S/4HANA Supplier data product
+- Integrated external data with your app
+- Added supplier details to UI
+- Implemented blocked supplier warnings
+- Created realistic mock supplier data
+- Understood data product patterns
 
 ## Understanding What Happened
 
@@ -290,12 +266,11 @@ cat sap-s4com-Supplier-v1.json | jq .
 ```
 
 ### Issue: Supplier details not showing
-**Solution:** Check the association in schema.cds
-
+**Solution:** Check the association in `schema.cds`.
 
 ### Issue: No blocked suppliers in data
 **Solution:** Ask Claude to add one:
-```
+```text
 Add a blocked supplier to the mock data with block reason "Quality issue"
 ```
 
@@ -307,22 +282,22 @@ Add a blocked supplier to the mock data with block reason "Quality issue"
 Want to add more supplier features? Try these:
 
 ### Add Supplier History
-```
+```text
 Show how many invoices and POs exist for each supplier, and the total amount
 ```
 
 ### Add Payment Terms Validation
-```
+```text
 Warn Maria if payment terms on the invoice differ from supplier's standard terms
 ```
 
 ### Add Supplier Search
-```
+```text
 Add a supplier lookup feature where Maria can search for supplier details by name
 ```
 
 ### Add Multiple Company Codes
-```
+```text
 Support suppliers with different payment terms in different company codes
 ```
 </details>
@@ -331,22 +306,21 @@ Support suppliers with different payment terms in different company codes
 
 Now that Maria can see supplier details and blocking status, let's make the entire service accessible to AI via MCP!
 
-**Continue to [Exercise 3 - Add MCP Server](../ex3/README.md)** to expose your service over the Model Context Protocol.
+**Continue to [Exercise 3 — Add MCP Server](../ex3/README.md)** to expose your service over the Model Context Protocol.
 
 ---
 
 ## Summary
 
-In this exercise, you:<br>
-✅ Imported S/4HANA Supplier data product<br>
-✅ Integrated supplier information with invoices<br>
-✅ Added supplier blocking warnings<br>
-✅ Created realistic mock supplier data<br>
-✅ Understood data product patterns<br>
+In this exercise, you:
+- Imported S/4HANA Supplier data product
+- Integrated supplier information with invoices
+- Added supplier blocking warnings
+- Created realistic mock supplier data
+- Understood data product patterns
 
 **Time spent:** ~15 minutes  
 **Data product APIs used:** 1 (Business Partner)  
-**Lines of integration code:** ~0 (Claude generated it!)  
-**Supplier data:** ✅ Integrated!
+**Lines of integration code:** ~0 (Claude generated it!)
 
-Maria can now see critical supplier info! Next: Making it AI-accessible with MCP. 🚀
+[Next exercise](../ex3/README.md)

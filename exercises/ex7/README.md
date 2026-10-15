@@ -1,4 +1,4 @@
-# Exercise 7 - Add AI-Powered Recommendations with @cap-js/ai (Optional)
+# Exercise 7 — Add AI-Powered Recommendations with @cap-js/ai (Optional)
 
 This is an **optional advanced exercise** that integrates the `@cap-js/ai` plugin to provide intelligent field recommendations and AI Core insights in your invoice matching system.
 
@@ -42,16 +42,16 @@ You need:
 - AI Core service instance (Cloud Foundry managed service)
 - No additional env vars — binding the service is all that is required
 
-## Exercise 7.1 - Install the Plugin
+## Exercise 7.1 — Install the Plugin
 
-1. Make sure you are in the project root:
+👉 Make sure you are in the project root:
 
 ```bash
 pwd
 # Should show: .../invoice-matching
 ```
 
-2. Install `@cap-js/ai`:
+👉 Install `@cap-js/ai`:
 
 ```bash
 npm add @cap-js/ai
@@ -59,7 +59,7 @@ npm add @cap-js/ai
 
 That is all the installation required. The plugin activates automatically as a CDS plugin — no `require` needed in your service code.
 
-3. Restart the CAP server:
+👉 Restart the CAP server:
 
 ```bash
 cds watch
@@ -67,11 +67,11 @@ cds watch
 
 The startup log should show a line like `[cds] - loaded plugin @cap-js/ai`.
 
-## Exercise 7.2 - Make the Invoice Entity Draft-Enabled
+## Exercise 7.2 — Make the Invoice Entity Draft-Enabled
 
 Recommendations only work on draft-enabled entities. Open your invoice service definition and check whether drafts are already enabled.
 
-Open `srv/invoice-service.cds` and look for `@odata.draft.enabled`. If it is missing on the `Invoices` entity, add it:
+👉 Open `srv/invoice-service.cds` and look for `@odata.draft.enabled`. If it is missing on the `Invoices` entity, add it:
 
 ```cds
 service InvoiceService {
@@ -83,11 +83,11 @@ service InvoiceService {
 }
 ```
 
-## Exercise 7.3 - Annotate Fields for Recommendations
+## Exercise 7.3 — Annotate Fields for Recommendations
 
 The plugin automatically includes any field that has `@Common.ValueList` or whose association target has `@cds.odata.valuelist`. You opt fields in or out with `@UI.RecommendationState`.
 
-Open `db/schema.cds` (or wherever your Invoices entity is defined) and add the following annotations:
+👉 Open `db/schema.cds` (or wherever your Invoices entity is defined) and add the following annotations:
 
 ```cds
 using { InvoiceService } from '../srv/invoice-service';
@@ -106,11 +106,14 @@ annotate InvoiceService.Invoices with {
 }
 ```
 
-> **How it works:** When Fiori Elements opens a draft for editing, it reads the `SAP_Recommendations` expand. The plugin intercepts that read, sends the last 2,000 active rows of the same entity as context to SAP-RPT-1, and returns ranked field-value suggestions. The top suggestion appears as a soft-fill default in the form.
+> [!NOTE]
+> When Fiori Elements opens a draft for editing, it reads the `SAP_Recommendations` expand. The plugin intercepts that read, sends the last 2,000 active rows of the same entity as context to SAP-RPT-1, and returns ranked field-value suggestions. The top suggestion appears as a soft-fill default in the form.
 
-## Exercise 7.4 - Verify the Generated Service Shape
+## Exercise 7.4 — Verify the Generated Service Shape
 
-The plugin extends your service automatically. You can inspect what it added with:
+The plugin extends your service automatically. 
+
+👉 Inspect what it added with:
 
 ```bash
 cds compile srv/ --to json | grep -A 20 "SAP_Recommendations"
@@ -118,34 +121,35 @@ cds compile srv/ --to json | grep -A 20 "SAP_Recommendations"
 
 You should see a generated `<Entity>_Recommendations` companion entity and a `@UI.Recommendations` annotation pointing to it. This is all handled by the plugin — no hand-written service code.
 
-## Exercise 7.5 - Test Locally with Mock Recommendations
+## Exercise 7.5 — Test Locally with Mock Recommendations
 
-1. Start the server if it is not already running:
+👉 Start the server if it is not already running:
 
 ```bash
 cds watch
 ```
 
-2. Open the Fiori Elements UI for invoices (typically at `http://localhost:4004`).
+👉 Open the Fiori Elements UI for invoices (typically at `http://localhost:4004`).
 
-3. Create or open a draft invoice.
+👉 Create or open a draft invoice.
 
-4. The `supplier` field should now show a recommendation chip above the input. In local development the mock returns the first non-null value from existing rows, so you will see a real value from your seed data.
+The `supplier` field should now show a recommendation chip above the input. In local development the mock returns the first non-null value from existing rows, so you will see a real value from your seed data.
 
-> **Expected behavior (mock):** The first non-null `supplier` value from active rows appears as a suggestion. Accept it by clicking the chip or ignore it — the draft activates normally either way.
+> [!NOTE]
+> The first non-null `supplier` value from active rows appears as a suggestion. Accept it by clicking the chip or ignore it — the draft activates normally either way.
 
 <br>![AI Recommendations](/exercises/ex7/images/07_05_0010.png)
 
 
-## Exercise 7.7 - (Optional) Connect to Real SAP AI Core
+## Exercise 7.7 — (Optional) Connect to Real SAP AI Core
 
-To switch from mock to real recommendations, bind your AI Core service instance:
+👉 To switch from mock to real recommendations, bind your AI Core service instance:
 
 ```bash
 cds bind <your-aicore-service-instance>
 ```
 
-Then start the server in hybrid mode:
+👉 Then start the server in hybrid mode:
 
 ```bash
 cds watch --profile hybrid

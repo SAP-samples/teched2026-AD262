@@ -1,4 +1,4 @@
-# Exercise 5 - Add Agent with Skills
+# Exercise 5 — Add Agent with Skills
 
 In this exercise, you will configure your matching service as an AI agent and create a skill that encodes AP (Accounts Payable) domain policy with business rules.
 
@@ -34,39 +34,40 @@ An **AI agent** is an AI system that can:
 | **Human Approval** | Not built-in | Configurable gates |
 
 
-## Exercise 5.1 - Install Agent Package
+## Exercise 5.1 — Install Agent Package
 
 Let's add the CAP agent package.
 
-1. Make sure you're in the project root:
+👉 Make sure you're in the project root:
 ```bash
 pwd
 # Should show: .../invoice-matching
 ```
 
-2. Install the CAP agent package:
+👉 Install the CAP agent package:
 ```bash
 npm add @cap-js/agents
 ```
 
 This adds agent capabilities to your CAP server.
 
-3. Restart the CAP server:
+👉 Restart the CAP server:
 ```bash
 cds watch
 ```
 
-## Exercise 5.2 - Configure Agent with Claude
+## Exercise 5.2 — Configure Agent with Claude
 
 Now we'll use Claude to configure the matching service as an agent.
 
-> 💡 **AI-Assisted Development**: Claude will configure the agent and set up human approval requirements.
+> [!TIP]
+> Claude will configure the agent and set up human approval requirements.
 
 ### The Claude Prompt
 
-Copy this exact prompt into Claude:
+👉 Copy this exact prompt into Claude:
 
-```
+```text
 /cap-developer Annotate matching service as an agent. Require human approval for match approvals.
 ```
 
@@ -94,17 +95,17 @@ Check:<br>
 
 Save all the generated files.
 
-## Exercise 5.3 - Access the Agent UI
+## Exercise 5.3 — Access the Agent UI
 
 Let's test the agent interface.
 
-1. Make sure the CAP server is running:
+👉 Make sure the CAP server is running:
 ```bash
 cds watch
 ```
 
-2. Open the agent preview URL:
-```
+👉 Open the agent preview URL:
+```text
 http://localhost:4004/a2a/matching/preview/
 ```
 
@@ -116,15 +117,15 @@ You should see:
 
 <br>![Agent Preview UI](/exercises/ex5/images/05_03_0010.png)
 
-## Exercise 5.4 - Test the Agent
+## Exercise 5.4 — Test the Agent
 
 Let's test the agent with a complex workflow.
 
 ### Test 1: Find Unmatched Invoices
 
-In the agent UI, type:
+👉 In the agent UI, type:
 
-```
+```text
 Find all unmatched invoices and propose PO matches
 ```
 
@@ -146,9 +147,9 @@ Find all unmatched invoices and propose PO matches
 
 ### Test 2: Request Approval
 
-Now try to approve a match:
+👉 Now try to approve a match:
 
-```
+```text
 Approve the match for invoice 1
 ```
 
@@ -165,7 +166,9 @@ This is the human-in-the-loop pattern!
 
 ### Test 3: Blocked Supplier Handling
 
-```
+👉 Type:
+
+```text
 Are there any invoices from blocked suppliers? What should I do with them?
 ```
 
@@ -183,7 +186,9 @@ Are there any invoices from blocked suppliers? What should I do with them?
 
 ### Test 4: Complex Multi-Step Query
 
-```
+👉 Type:
+
+```text
 Find invoices over 1000 EUR that have been open more than 30 days, then propose matches and highlight any with blocked suppliers
 ```
 
@@ -196,27 +201,28 @@ Find invoices over 1000 EUR that have been open more than 30 days, then propose 
 
 This is AI-powered AP processing!
 
-## Exercise 5.5 - Generate additional sample data with not matching amounts
+## Exercise 5.5 — Generate additional sample data with not matching amounts
 
-Copy this exact prompt into Claude:
+👉 Copy this exact prompt into Claude:
 
-```
+```text
 /cap-developer Generate additional sample data where the amount is not exactly matching of the inovices and 
 purchase orders. Amounts should diverge between 2-10%. One invoice should have an identifier INV-TEST-001. 
 Another should have a blocked supplier called Beta Corp with a perfect match.
 ```
 
-## Exercise 5.6 - Create AP Domain Policy Skill
+## Exercise 5.6 — Create AP Domain Policy Skill
 
 Now let's create a skill that encodes business rules.
 
-> 💡 **Skills vs Tools**: Tools are what the agent CAN do (query, create, update). Skills are HOW it SHOULD do them (policies, rules, guidelines).
+> [!NOTE]
+> Tools are what the agent CAN do (query, create, update). Skills are HOW it SHOULD do them (policies, rules, guidelines).
 
 ### The Claude Prompt
 
-Copy this exact prompt into Claude:
+👉 Copy this exact prompt into Claude:
 
-```
+```text
 Create a skill that gives the matching agent its AP domain policy. It should guide how the agent proposes and 
 confirms matches - not what tools it has.
 
@@ -309,18 +315,15 @@ Check the skill includes:
 ✅ Actionable for Maria<br>
 
 
-## Exercise 5.7 - Test the AP Policy Skill
+## Exercise 5.7 — Test the AP Policy Skill
 
 Let's verify the business rules are working.
 
 ### Test 1: Clean Match (Within 2%)
 
-Create test data:
-- Invoice: €1000.00
-- PO: €1015.00 (1.5% difference)
+👉 Agent query:
 
-Agent query:
-```
+```text
 Propose a match for invoice INV-TEST-001
 ```
 
@@ -334,12 +337,9 @@ Propose a match for invoice INV-TEST-001
 
 ### Test 4: Blocked Supplier
 
-Test data:
-- Invoice from blocked supplier (Beta Corp)
-- Perfect PO match
+👉 Agent query:
 
-Agent query:
-```
+```text
 Should I match this invoice from Beta Corp?
 ```
 
@@ -351,13 +351,9 @@ Should I match this invoice from Beta Corp?
 
 ### Test 5: High Semantic, Divergent Amount
 
-Test data:
-- Invoice: €5000.00, description "Cloud storage annual license"
-- PO: €1200.00, description "Cloud storage subscription"
-- Semantic similarity: 0.95 (very high)
+👉 Agent query:
 
-Agent query:
-```
+```text
 Find matches for the cloud storage invoice
 ```
 
@@ -371,13 +367,13 @@ Find matches for the cloud storage invoice
 
 <br>![Policy Enforcement](/exercises/ex5/images/05_06_0010.png)
 
-## Exercise 5.8 - Understand Agent Architecture
+## Exercise 5.8 — Understand Agent Architecture
 
 Let's understand how the agent works.
 
 ### Agent Components
 
-```
+```text
 ┌─────────────────────────────────────────┐
 │         User (Maria)                    │
 │  "Find unmatched invoices and match"    │
@@ -421,7 +417,7 @@ Let's understand how the agent works.
 
 ### Human Approval Gates
 
-```
+```text
 Agent wants to: Approve match
                     ↓
              Check @agent.requiresApproval
@@ -490,7 +486,7 @@ Agent wants to: Approve match
 
 ### Issue: Agent UI doesn't load
 **Solution:** Check the URL and ensure CAP server is running:
-```
+```text
 http://localhost:4004/a2a/matching/preview/
 ```
 
@@ -516,25 +512,25 @@ this.on('agent:plan', async (req) => {
 <details><summary><h2>Optional Enhancements (can be skipped onsite at TechEd)</h2></summary>
 ### Add More Skills
 
-```
+```text
 Create a risk assessment skill that flags invoices over €10,000 or from new suppliers
 ```
 
 ### Multi-Language Support
 
-```
+```text
 Make the agent respond in German when Maria asks questions in German
 ```
 
 ### Batch Operations
 
-```
+```text
 Add a skill for batch matching with confirmation after every 10 matches
 ```
 
 ### Learning from Feedback
 
-```
+```text
 Track when Maria overrides agent recommendations and adjust confidence scoring
 ```
 </details>

@@ -1,4 +1,4 @@
-# Exercise 6 - Add Audit Log and Change Tracking (Optional)
+# Exercise 6 — Add Audit Log and Change Tracking (Optional)
 
 This is an **optional advanced exercise** that adds enterprise governance and compliance features to your invoice matching system.
 
@@ -39,46 +39,47 @@ AI systems in enterprise applications must:
 - **Performance tracking** - Monitor approval/rejection rates
 - **Policy enforcement** - Verify business rules followed
 
-## Exercise 6.1 - Install Audit Packages
+## Exercise 6.1 — Install Audit Packages
 
 Let's add the audit logging and change tracking packages.
 
-1. Make sure you're in the project root:
+👉 Make sure you're in the project root:
 ```bash
 pwd
 # Should show: .../invoice-matching
 ```
 
-2. Add audit log support:
+👉 Add audit log support:
 ```bash
 cds add audit-logging
 ```
 
 This configures audit logging for CAP.
 
-3. Add change tracking package:
+👉 Add change tracking package:
 ```bash
 npm add @cap-js/change-tracking
 ```
 
 This enables temporal versioning of entities.
 
-4. Restart the CAP server:
+👉 Restart the CAP server:
 ```bash
 cds watch
 ```
 
-## Exercise 6.2 - Configure Audit and Change Tracking
+## Exercise 6.2 — Configure Audit and Change Tracking
 
 Now we'll use Claude to add the necessary annotations.
 
-> 💡 **AI-Assisted Development**: Claude will add all data-privacy and change-tracking annotations following GDPR best practices.
+> [!TIP]
+> Claude will add all data-privacy and change-tracking annotations following GDPR best practices.
 
 ### The Claude Prompt
 
-Copy this exact prompt into Claude:
+👉 Copy this exact prompt into Claude:
 
-```
+```text
 /cap-developer Add data-privacy and change-tracking annotations to the AP matching model.
 
 Treat the supplier as the data subject. Add an unmanaged association from Invoice to the S/4 Supplier, joined on supplier name. 
@@ -164,26 +165,26 @@ Check:
 - ✅ Are approve/reject/escalate marked for audit logging?
 
 
-## Exercise 6.3 - Test Updated Schema
+## Exercise 6.3 — Test Updated Schema
 
 Deploy the changes to enable change tracking.
 
-1. Restart the CAP server:
+👉 Restart the CAP server:
 ```bash
 cds watch
 ```
 
-2. Check the console for audit log initialization messages.
+👉 Check the console for audit log initialization messages.
 
-## Exercise 6.4 - Test Audit Trail
+## Exercise 6.4 — Test Audit Trail
 
 Let's verify the audit logging is working.
 
 ### Test 1: Change an Invoice Description
 
-Use Claude with this prompt:
+👉 Use Claude with this prompt:
 
-```
+```text
 Do a REST call to change the description of an invoice
 ```
 
@@ -230,7 +231,7 @@ Check the console - you should see audit log entries like:
 
 ### Test 2: Approve a Match Decision
 
-1. In the agent UI or directly via API, approve a match
+👉 In the agent UI or directly via API, approve a match.
 
 2. Check the audit log shows:
    - ✅ Action: approve
@@ -243,8 +244,9 @@ Check the console - you should see audit log entries like:
 
 ### Test 3: Query Change History
 
-Ask Claude:
-```
+👉 Ask Claude:
+
+```text
 Show me the change history for match decision INV-001
 ```
 
@@ -254,7 +256,7 @@ Claude will:
 - Display who changed what and when
 
 **Expected output:**
-```
+```text
 Match Decision Change History:
 1. 2026-09-30 10:00 - Created by agent
    - outcome: proposed
@@ -269,8 +271,9 @@ Match Decision Change History:
 
 ### Test 4: Data Subject Access Request (GDPR)
 
-Simulate a GDPR request:
-```
+👉 Simulate a GDPR request:
+
+```text
 Show me all data related to supplier "Acme Corp"
 ```
 
@@ -284,14 +287,14 @@ This demonstrates GDPR compliance - you can fulfill "right to access" requests.
 
 <br>![Data Subject Report](/exercises/ex6/images/06_04_0020.png)
 
-## Exercise 6.5 - Understand Change Tracking
+## Exercise 6.5 — Understand Change Tracking
 
 Let's understand how change tracking works.
 
 ### Temporal Tables
 
 For each entity with `@changelog`:
-```
+```text
 MatchDecisions (current state)
 ├── ID: uuid
 ├── confidence: 0.85
@@ -341,34 +344,27 @@ CAP handles:
 - ✅ Tracking timestamps
 - ✅ Maintaining referential integrity
 
-## Exercise 6.6 - Audit Agent Actions
+## Exercise 6.6 — Audit Agent Actions
 
 Let's verify AI agent actions are audited.
 
-1. In the agent UI, ask:
-```
+👉 In the agent UI, ask:
+```text
 Find unmatched invoices and propose matches
 ```
 
-2. The agent will create multiple match decisions
+The agent will create multiple match decisions.
 
-3. Check the audit log:
-   - Each decision creation is logged
-   - User context shows "agent"
-   - Data subject is identified (supplier)
-   - All fields are recorded
+👉 Check the audit log — each decision creation is logged, the user context shows "agent", the data subject is identified (supplier), and all fields are recorded.
 
-4. Ask the agent to approve one:
-```
+👉 Ask the agent to approve one:
+```text
 Approve the match for invoice INV-001
 ```
 
-5. Human approval prompt appears - click Yes
+👉 Click Yes on the human approval prompt.
 
-6. Check the audit log:
-   - Approval action logged
-   - Shows human approved (not just agent)
-   - Records the state transition
+👉 Check the audit log — the approval action is logged, showing the human approved (not just the agent) and the state transition.
 
 **Why This Matters:**
 - 🔍 Every AI decision is traceable
@@ -376,14 +372,14 @@ Approve the match for invoice INV-001
 - 📋 Compliance requirements met
 - ⚖️ Legal defensibility
 
-## Exercise 6.7 - Data Privacy Compliance
+## Exercise 6.7 — Data Privacy Compliance
 
 Let's verify GDPR compliance features.
 
 ### Right to Access
 
-Supplier "Acme Corp" requests their data:
-```
+👉 Supplier "Acme Corp" requests their data:
+```text
 Show all data for supplier Acme Corp including audit logs
 ```
 
@@ -396,8 +392,8 @@ Response includes:
 
 ### Right to Erasure (Right to be Forgotten)
 
-If needed, you can:
-```
+👉 If needed, you can:
+```text
 Delete all data for supplier Beta Corp
 ```
 
@@ -473,25 +469,25 @@ cds deploy --to sqlite
 
 ### Add Audit Dashboard
 
-```
+```text
 Create a React component that displays recent audit log entries with filters by user, entity, and date range
 ```
 
 ### Export Audit Reports
 
-```
+```text
 Add an action to export audit logs as CSV for external auditors
 ```
 
 ### Alerting
 
-```
+```text
 Send alerts when high-risk operations occur (e.g., mass deletions, bulk approvals)
 ```
 
 ### Anonymization
 
-```
+```text
 After retention period, anonymize personal data while keeping audit trail
 ```
 
