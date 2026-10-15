@@ -37,12 +37,12 @@ This creates a new CAP project with folders for database (`db/`), services (`srv
 cd invoice-matching
 ```
 
-4. Add Node.js runtime:
+4. CAP supports JAVA and Node.js as runtime. For this project we choose Node.js:
 ```bash
 cds add nodejs
 ```
 
-5. Add SQLite database:
+5. We use a SQLite database to speed up the local development. For productive deployment you can choose SAP HANA. Add SQLite database with this command:
 ```bash
 cds add sqlite
 ```
