@@ -307,7 +307,7 @@ When recording a match, let Maria set the confidence level with a slider (0-100%
 ```
 Add a "History" tab showing all approved and rejected decisions
 ```
-<details>
+</details>
 
 ## Next Steps
 
