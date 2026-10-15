@@ -25,7 +25,7 @@ This helps Maria identify issues like blocked suppliers, unusual payment terms, 
 
 SAP provides pre-built data products that you can import into CAP.
 
-👉 On the root folder of this exercise you can find the file `sap-s4com-Supplier-v1.json`. Download it and copy it to your project root.
+👉 Copy the [`sap-s4com-Supplier-v1.json`](../../sap-s4com-Supplier-v1.json) file from the repository root to your project root.
 
 👉 Make sure you're in the project root in your terminal:
 ```bash
