@@ -112,12 +112,12 @@ This workshop is structured into progressive exercises:
 
 By the end of this session, you will be able to:
 
-1. ✅ Understand how Model Context Protocol (MCP) enables AI agents to interact with enterprise applications
-2. ✅ Build an MCP server that exposes CAP services to AI agents
-3. ✅ Implement Agent2Agent protocol for multi-agent collaboration
-4. ✅ Create practical AI-powered business processes using CAP and MCP
-5. ✅ Integrate enterprise AI capabilities with SAP AI Core (optional)
-6. ✅ Implement governance and compliance features for AI agents (optional)
+1. Understand how Model Context Protocol (MCP) enables AI agents to interact with enterprise applications
+2. Build an MCP server that exposes CAP services to AI agents
+3. Implement Agent2Agent protocol for multi-agent collaboration
+4. Create practical AI-powered business processes using CAP and MCP
+5. Integrate enterprise AI capabilities with SAP AI Core (optional)
+6. Implement governance and compliance features for AI agents (optional)
 
 ## Project Structure
 
@@ -135,15 +135,6 @@ invoice-matching/           # Your CAP project (created in Exercise 0)
 │   ├── skills/                        # Custom agent skills
 │   └── prompts/                       # Agent prompt templates
 ├── app/matching/              # React UI (generated in Exercise 4)
-│   ├── src/
-│   │   ├── App.jsx
-│   │   └── components/
-│   │       ├── Dashboard.jsx
-│   │       ├── InvoiceManager.jsx
-│   │       ├── AgentChat.jsx
-│   │       ├── SupplierRecommendations.jsx
-│   │       └── AuditDashboard.jsx
-│   └── package.json
 ├── package.json
 └── sap-s4com-Supplier-v1.json  # Supplier data product
 ```

@@ -23,10 +23,10 @@ The **Model Context Protocol (MCP)** is an open standard that enables AI applica
 - **Prompts:** Pre-built templates to guide AI interactions
 
 **Why MCP Matters:**
-- ✅ Standard protocol - works with any MCP-compatible AI
-- ✅ Secure - built-in authentication and permissions
-- ✅ Automatic - CAP entities become MCP tools
-- ✅ No custom API - reuse existing OData services
+- Standard protocol - works with any MCP-compatible AI
+- Secure - built-in authentication and permissions
+- Automatic - CAP entities become MCP tools
+- No custom API - reuse existing OData services
 
 ## Exercise 3.1 - Install MCP Adapter
 

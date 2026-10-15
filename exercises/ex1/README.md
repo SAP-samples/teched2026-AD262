@@ -13,12 +13,8 @@ By the end of this exercise, you will:
 
 ## What You Will Build
 
-Maria's invoice matching interface with:
-- **Left Panel:** List of open invoices (supplier, amount, description)
-- **Right Panel:** List of open purchase orders (supplier, amount, description)
-- **Match Recording:** Select invoice + PO, click "Record Match"
-- **Pending Decisions:** List of proposed matches with Approve/Reject buttons
-- **Dynamic Updates:** Re-fetch data after every action
+Maria's invoice matching interface with open invoices, purchase orders and proposed matched that looks like this:
+<br>![Matching UI](/exercises/ex1/images/01_01_0030.png)
 
 ## Exercise 1.1 - Add React to Your CAP Project
 
@@ -90,7 +86,7 @@ Claude will create a React application with:
 Run cds watch and check the generated UI. It should look like this:
 <br>![Matching UI](/exercises/ex1/images/01_01_0030.png)
 
-### Review the Generated Code
+<details><summary><h2>Optional: Review the AI generated code</h2></summary>
 
 Check these key features:
 
@@ -116,6 +112,7 @@ Check these key features:
 ✅ Is there visual feedback for selected items?<br>
 ✅ Are amounts formatted with currency?<br>
 
+</details>
 
 ## Exercise 1.3 - Update CAP Service for UI Actions
 

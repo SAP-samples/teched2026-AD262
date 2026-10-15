@@ -62,7 +62,7 @@ You should see the CAP server starting. With `Ctrl+C` you can stop the server wh
 
 Now comes the exciting part - we'll use Claude to generate the complete application!
 
-> 💡 **AI-Assisted Development**: Instead of manually writing hundreds of lines of code, you'll use a single Claude prompt to generate everything.
+> 💡 **CAP & AI-Assisted Development**: Instead of manually writing hundreds of lines of code, you'll use out of the box capabilities of CAP combined with a single Claude prompt to generate everything.
 
 Start Claude Code by entering claude in the terminal, which is not running the preview. 
 
@@ -257,14 +257,14 @@ Let's verify the sample data is realistic and useful. If your service is named d
 
 ## Understanding What Happened
 
-**Traditional Approach:**
-- 30-45 minutes of typing
-- Manual CSV creation
-- Prone to typos and errors
+**CAP:**
+- initial and add capabilities with CDS in seconds
+- avoid custom code with CAP features like constraints and status-flows
+- focus on domain and reduce technical dept
 
-**AI-Assisted Approach:**
-- 5 minutes with Claude
-- Generated in seconds
+**AI-Assisted:**
+- 5 minutes with Agntic Coding, instead of 30-45 minutes of typing
+- Meaningful sample data
 - Consistent and complete
 
 **What You Learned:**

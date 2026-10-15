@@ -108,7 +108,7 @@ Claude should:
    - Show warning for blocked suppliers
    - Format payment terms clearly
 
-### Review the Generated Code
+<details><summary><h2>Optional: Review the AI generated code</h2></summary>
 
 Check these key features:
 
@@ -128,9 +128,11 @@ Check these key features:
 ✅ Is there a visual warning for blocked suppliers?<br>
 ✅ Are payment terms displayed?<br>
 
+</details>
+
 ## Exercise 2.3 - Test the updated Schema
 
-After saving the generated code, test the updated schema.
+Now it is time to test the updated schema. In case the preview is still running stop it with STRG+c.
 
 1. Restart the CAP server:
 ```bash
