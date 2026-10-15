@@ -56,9 +56,9 @@ You should see a message indicating MCP is enabled.
 
 Now we'll manually configure MCP for your service.
 
-👉 Annotate the service in `srv/matching-service.cds` — add this line at the end of the file. replace `nameOfYourMatchingService` with the service name Claude chose — check your `.cds` file.
+👉 Annotate the service in `srv/invoice-matching-service.cds` — add this line at the end of the file:
 ```cds
-annotate nameOfYourMatchingService with @odata @mcp;
+annotate InvoiceMatchingService with @odata @mcp;
 ```
 
 > [!NOTE]

@@ -112,6 +112,7 @@ or escalated; once approved it can only be escalated; rejected and escalated are
 Generate realistic sample data that also include data about furniture and laptops. Use SQLite for local dev. 
 Ensure to use cap status-flows are used for the worklow: https://cap.cloud.sap/docs/guides/services/status-flows 
 Use the new case when assert constraints when possible to avoid custom code: https://cap.cloud.sap/docs/guides/services/constraints#assert-constraint
+Name the service InvoiceMatchingService, the service definition file srv/invoice-matching-service.cds, and the implementation srv/invoice-matching-service.js.
 ```
 
 Simply approve all changes. That's it. Do *not* switch on auto approve that you can follow the changes it does.
@@ -125,7 +126,7 @@ Claude should generate:
    - `PurchaseOrders` entity with supplier, amount, description, isOpen flag
    - `MatchDecisions` entity linking invoices to POs with confidence, rationale, outcome
 
-2. **Service Definition** (`srv/matching-service.cds`):
+2. **Service Definition** (`srv/invoice-matching-service.cds`):
    - Service exposing all entities
    - Actions for approve, reject, escalate operations
    - Status Flow annotations like:  approve @from: [ #Proposed ] @to: #Approved;

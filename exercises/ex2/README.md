@@ -83,7 +83,7 @@ Claude should:
    - Add association from Invoice to Supplier
    - Add supplier details fields
 
-2. **Update Service Implementation** (`srv/matching-service.js`):
+2. **Update Service Implementation** (`srv/invoice-matching-service.js`):
    - Add logic to fetch supplier details
    - Match suppliers by name
    - Pull payment terms and blocking info from company code records

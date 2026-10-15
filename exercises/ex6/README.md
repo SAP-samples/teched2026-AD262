@@ -127,18 +127,18 @@ entity MatchDecisions : cuid, managed {
 }
 ```
 
-3. **Configure Audit Logging** (srv/matching-service.cds):
+3. **Configure Audit Logging** (srv/invoice-matching-service.cds):
 ```cds
-using { MatchingService } from './matching-service';
+using { InvoiceMatchingService } from './invoice-matching-service';
 
 // Mark sensitive operations for audit
-annotate MatchingService.approve with @AuditLog.Operation.Write;
-annotate MatchingService.reject with @AuditLog.Operation.Write;
-annotate MatchingService.escalate with @AuditLog.Operation.Write;
+annotate InvoiceMatchingService.approve with @AuditLog.Operation.Write;
+annotate InvoiceMatchingService.reject with @AuditLog.Operation.Write;
+annotate InvoiceMatchingService.escalate with @AuditLog.Operation.Write;
 
 // Log data access
-annotate MatchingService.Invoices with @AuditLog.Operation.Read;
-annotate MatchingService.MatchDecisions with @AuditLog.Operation.Read;
+annotate InvoiceMatchingService.Invoices with @AuditLog.Operation.Read;
+annotate InvoiceMatchingService.MatchDecisions with @AuditLog.Operation.Read;
 ```
 
 4. **Service Configuration** (package.json):

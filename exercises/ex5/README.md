@@ -75,14 +75,14 @@ Now we'll use Claude to configure the matching service as an agent.
 
 Claude should:
 
-1. **Annotate the Service** (srv/matching-service.cds or srv/agent.cds):
+1. **Annotate the Service** (srv/invoice-matching-service.cds or srv/agent.cds):
 ```cds
-using { MatchingService } from './matching-service';
+using { InvoiceMatchingService } from './invoice-matching-service';
 
-annotate MatchingService with @agent;
+annotate InvoiceMatchingService with @agent;
 
 // Require human approval for approve action
-annotate MatchingService.approve with @agent.hitl;
+annotate InvoiceMatchingService.approve with @agent.hitl;
 ```
 
 > [!TIP]
@@ -274,7 +274,7 @@ module.exports = {
 };
 ```
 
-2. **Skill Registration** (srv/matching-service.js):
+2. **Skill Registration** (srv/invoice-matching-service.js):
 ```javascript
 const apPolicy = require('./skills/ap-policy');
 
@@ -495,7 +495,7 @@ http://localhost:4004/a2a/matching/preview/
 ### Issue: Human approval doesn't prompt
 **Solution:** Verify the annotation:
 ```cds
-annotate MatchingService.approve with @agent.hitl;
+annotate InvoiceMatchingService.approve with @agent.hitl;
 ```
 
 ### Issue: Skills not applying

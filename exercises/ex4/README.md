@@ -87,12 +87,12 @@ Claude should:
    - Configure local embedding model
    - Set vector dimensions
 
-3. **Implement Embedding Generation** (srv/matching-service.js):
+3. **Implement Embedding Generation** (srv/invoice-matching-service.js):
    - Generate embeddings on CREATE/UPDATE
    - Store vectors in database
    - Handle errors gracefully
 
-4. **Add Similarity Search** (srv/matching-service.js):
+4. **Add Similarity Search** (srv/invoice-matching-service.js):
    - Create `searchMatches` action
    - Calculate vector similarity
    - Return ranked results with scores
