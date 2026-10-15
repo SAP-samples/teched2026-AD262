@@ -40,14 +40,7 @@ pwd
 # Should show: .../invoice-matching
 ```
 
-5. Verify the data product file exists:
-```bash
-ls sap-s4com-Supplier-v1.json
-```
-
-You should see the file listed.
-
-6. Import the data product:
+5. Import the data product:
 ```bash
 cds import --data-product sap-s4com-Supplier-v1.json
 ```
@@ -58,7 +51,7 @@ This command:
 - Sets up service references
 - Configures API metadata
 
-7. Check what was imported:
+6. Check what was imported:
 ```bash
 ls apis/imported/
 ```
@@ -119,21 +112,21 @@ Claude should:
 
 Check these key features:
 
-**Data Model:**
-- ✅ Is there an association from Invoice to Supplier?
-- ✅ Are payment terms and blocking fields included?
-- ✅ Is the association based on supplier name matching?
+**Data Model:**<br>
+✅ Is there an association from Invoice to Supplier?<br>
+✅ Are payment terms and blocking fields included?<br>
+✅ Is the association based on supplier name matching?<br>
 
-**Mock Data:**
-- ✅ Do supplier CSV files exist?
-- ✅ Do supplier names match those in invoices?
-- ✅ Is at least one supplier blocked?
-- ✅ Are payment terms realistic (NET30, NET60, etc.)?
+**Mock Data:**<br>
+✅ Do supplier CSV files exist?<br>
+✅ Do supplier names match those in invoices?<br>
+✅ Is at least one supplier blocked?<br>
+✅ Are payment terms realistic (NET30, NET60, etc.)?<br>
 
-**UI Enhancement:**
-- ✅ Does the invoice panel show supplier details?
-- ✅ Is there a visual warning for blocked suppliers?
-- ✅ Are payment terms displayed?
+**UI Enhancement:**<br>
+✅ Does the invoice panel show supplier details?<br>
+✅ Is there a visual warning for blocked suppliers?<br>
+✅ Are payment terms displayed?<br>
 
 ## Exercise 2.3 - Test the updated Schema
 
@@ -144,19 +137,13 @@ After saving the generated code, test the updated schema.
 cds watch
 ```
 
-2. The React app should auto-reload. If not:
-```bash
-cd app/matching
-npm start
-```
-
 ## Exercise 2.4 - Test Supplier Integration
 
 Let's verify the supplier information appears correctly.
 
 ### Check in Browser
 
-1. Open the UI at `http://localhost:3000`
+1. Open the UI at `http://localhost:4004`
 
 2. Look at the invoice list - each invoice should now show:
    - Supplier name
@@ -289,7 +276,7 @@ entity Invoices {
 - Matching strategies (by name vs ID)
 - Business logic for supplier blocking
 
-## Troubleshooting
+<details><summary><h2>Troubleshooting</h2></summary>
 
 ### Issue: Data product import fails
 **Solution:** Verify the JSON file exists and is valid:
@@ -333,6 +320,7 @@ Add a supplier lookup feature where Maria can search for supplier details by nam
 ```
 Support suppliers with different payment terms in different company codes
 ```
+</details>
 
 ## Next Steps
 
@@ -344,12 +332,12 @@ Now that Maria can see supplier details and blocking status, let's make the enti
 
 ## Summary
 
-In this exercise, you:
-- ✅ Imported S/4HANA Supplier data product
-- ✅ Integrated supplier information with invoices
-- ✅ Added supplier blocking warnings
-- ✅ Created realistic mock supplier data
-- ✅ Understood data product patterns
+In this exercise, you:<br>
+✅ Imported S/4HANA Supplier data product<br>
+✅ Integrated supplier information with invoices<br>
+✅ Added supplier blocking warnings<br>
+✅ Created realistic mock supplier data<br>
+✅ Understood data product patterns<br>
 
 **Time spent:** ~15 minutes  
 **Data product APIs used:** 1 (Business Partner)  

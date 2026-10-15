@@ -87,10 +87,10 @@ annotate MatchingService.approve with @agent.hitl;
 
 ### Review the Generated Code
 
-Check:
-- ✅ Is the service annotated with @agent?
-- ✅ Does approve action require human approval?
-- ✅ Is the agent properly named and described?
+Check:<br>
+✅ Is the service annotated with @agent?<br>
+✅ Does approve action require human approval?<br>
+✅ Is the agent properly named and described?<br>
 
 Save all the generated files.
 
@@ -281,26 +281,26 @@ this.on('agent:plan', async (req) => {
 
 Check the skill includes:
 
-**Amount Tolerance Logic:**
-- ✅ Within 2%: clean match
-- ✅ 2-5%: add price-variance note
-- ✅ Over 5%: must escalate
+**Amount Tolerance Logic:**<br>
+✅ Within 2%: clean match<br>
+✅ 2-5%: add price-variance note<br>
+✅ Over 5%: must escalate<br>
 
-**Confidence Rubric:**
-- ✅ Exact supplier + amount: highest score
-- ✅ Semantic description match: lower score
-- ✅ Partial match: lowest score
-- ✅ Distrust high similarity with divergent amounts
+**Confidence Rubric:**<br>
+✅ Exact supplier + amount: highest score<br>
+✅ Semantic description match: lower score<br>
+✅ Partial match: lowest score<br>
+✅ Distrust high similarity with divergent amounts<br>
 
-**Blocked Supplier Rule:**
-- ✅ Never auto-confirm blocked suppliers
-- ✅ Flag with blocking reason
-- ✅ Force escalation
+**Blocked Supplier Rule:**<br>
+✅ Never auto-confirm blocked suppliers<br>
+✅ Flag with blocking reason<br>
+✅ Force escalation<br>
 
-**Rationale Quality:**
-- ✅ 1-2 sentences
-- ✅ States which signals matched
-- ✅ Actionable for Maria
+**Rationale Quality:**<br>
+✅ 1-2 sentences<br>
+✅ States which signals matched<br>
+✅ Actionable for Maria<br>
 
 Save the skill files.
 
@@ -536,13 +536,13 @@ Track when Maria overrides agent recommendations and adjust confidence scoring
 
 ## Next Steps
 
-Congratulations! You've completed the core workshop. You now have:
-- ✅ Complete invoice matching application
-- ✅ React UI for Maria
-- ✅ S/4HANA supplier integration
-- ✅ MCP server for AI access
-- ✅ Semantic search
-- ✅ Intelligent agent with business rules
+Congratulations! You've completed the core workshop. You now have:<br>
+✅ Complete invoice matching application<br>
+✅ React UI for Maria<br>
+✅ S/4HANA supplier integration<br>
+✅ MCP server for AI access<br>
+✅ Semantic search<br>
+✅ Intelligent agent with business rules<br>
 
 **Optional:** Continue to [Exercise 6 - Audit Log & Change Tracking](../ex6/README.md) to add enterprise governance.
 
@@ -556,12 +556,12 @@ Or explore on your own:
 
 ## Summary
 
-In this exercise, you:
-- ✅ Configured CAP service as an agent
-- ✅ Created AP domain policy skill
-- ✅ Encoded complex business rules
-- ✅ Tested intelligent workflows
-- ✅ Implemented human approval gates
+In this exercise, you:<br>
+✅ Configured CAP service as an agent<br>
+✅ Created AP domain policy skill<br>
+✅ Encoded complex business rules<br>
+✅ Tested intelligent workflows<br>
+✅ Implemented human approval gates<br>
 
 **Time spent:** ~25 minutes  
 **Business rules encoded:** 5+ policies  

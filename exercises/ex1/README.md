@@ -94,27 +94,27 @@ Run cds watch and check the generated UI. It should look like this:
 
 Check these key features:
 
-**Component Structure:**
-- ✅ Does it have separate components for invoices, POs, and decisions?
-- ✅ Is there state management for selected items?
-- ✅ Does it handle loading and error states?
+**Component Structure:**<br>
+✅ Does it have separate components for invoices, POs, and decisions?<br>
+✅ Is there state management for selected items?<br>
+✅ Does it handle loading and error states?<br>
 
-**Data Fetching:**
-- ✅ Does it fetch from `/odata/v4/matching/`?
-- ✅ Does it filter for open invoices (`status eq 'open'`)?
-- ✅ Does it filter for open POs (`isOpen eq true`)?
-- ✅ Does it filter for proposed decisions (`outcome eq 'proposed'`)?
+**Data Fetching:**<br>
+✅ Does it fetch from `/odata/v4/matching/`?<br>
+✅ Does it filter for open invoices (`status eq 'open'`)?<br>
+✅ Does it filter for open POs (`isOpen eq true`)?<br>
+✅ Does it filter for proposed decisions (`outcome eq 'proposed'`)?<br>
 
-**User Interactions:**
-- ✅ Can user select one invoice and one PO?
-- ✅ Does "Record Match" button appear when both selected?
-- ✅ Are there Approve/Reject buttons for each decision?
-- ✅ Does it re-fetch after each action?
+**User Interactions:**<br>
+✅ Can user select one invoice and one PO?<br>
+✅ Does "Record Match" button appear when both selected?<br>
+✅ Are there Approve/Reject buttons for each decision?<br>
+✅ Does it re-fetch after each action?<br>
 
-**UI Layout:**
-- ✅ Are panels side-by-side (or stacked on mobile)?
-- ✅ Is there visual feedback for selected items?
-- ✅ Are amounts formatted with currency?
+**UI Layout:**<br>
+✅ Are panels side-by-side (or stacked on mobile)?<br>
+✅ Is there visual feedback for selected items?<br>
+✅ Are amounts formatted with currency?<br>
 
 
 ## Exercise 1.3 - Update CAP Service for UI Actions
@@ -225,11 +225,11 @@ function App() {
 }
 ```
 
-**Key Patterns:**
-- ✅ State hooks for data and selections
-- ✅ Effect hooks to fetch on mount
-- ✅ Handler functions passed to child components
-- ✅ Re-fetch after mutations
+**Key Patterns:**<br>
+✅ State hooks for data and selections<br>
+✅ Effect hooks to fetch on mount<br>
+✅ Handler functions passed to child components<br>
+✅ Re-fetch after mutations<br>
 
 ## What You've Accomplished
 
@@ -319,12 +319,12 @@ Now that Maria can see and match invoices manually, let's add supplier informati
 
 ## Summary
 
-In this exercise, you:
-- ✅ Generated a complete React UI with AI
-- ✅ Built a split-panel matching interface
-- ✅ Implemented workflow state transitions
-- ✅ Connected React to CAP OData
-- ✅ Tested the full matching workflow
+In this exercise, you:<br>
+✅ Generated a complete React UI with AI<br>
+✅ Built a split-panel matching interface<br>
+✅ Implemented workflow state transitions<br>
+✅ Connected React to CAP OData<br>
+✅ Tested the full matching workflow<br>
 
 **Time spent:** ~20 minutes  
 **React components written:** ~0 (Claude did it!)  

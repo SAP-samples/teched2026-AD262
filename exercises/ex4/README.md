@@ -102,21 +102,21 @@ Claude should:
 
 Check these key features:
 
-**Data Model Extensions:**
-- ✅ Are vector fields added to Invoices and POs? Check the schema file.
-- ✅ Is the vector dimension specified?
-- ✅ Are vectors configured correctly?
+**Data Model Extensions:**<br>
+✅ Are vector fields added to Invoices and POs? Check the schema file.<br>
+✅ Is the vector dimension specified?<br>
+✅ Are vectors configured correctly?<br>
 
-**AI Configuration:**
-- ✅ Is @cap-js/ai configured in package.json?
-- ✅ Is a local model specified (e.g., "sentence-transformers/all-MiniLM-L6-v2")?
-- ✅ Are dimensions matching the model?
+**AI Configuration:**<br>
+✅ Is @cap-js/ai configured in package.json?<br>
+✅ Is a local model specified (e.g., "sentence-transformers/all-MiniLM-L6-v2")?<br>
+✅ Are dimensions matching the model?<br>
 
-**Service Implementation:**
-- ✅ Are embeddings generated automatically on create/update?
-- ✅ Is there a searchMatches action?
-- ✅ Does it calculate cosine similarity?
-- ✅ Does it return ranked results?
+**Service Implementation:**<br>
+✅ Are embeddings generated automatically on create/update?<br>
+✅ Is there a searchMatches action?<br>
+✅ Does it calculate cosine similarity?<br>
+✅ Does it return ranked results?<br>
 
 Save all the generated files.
 
@@ -220,11 +220,11 @@ We're using a Hugging Face model:
 - **Speed:** ~50ms per embedding
 - **Quality:** Good for general text
 
-**Why local?**
-- ✅ No external API needed
-- ✅ No API costs
-- ✅ Works offline
-- ✅ Data privacy
+**Why local?**<br>
+✅ No external API needed<br>
+✅ No API costs<br>
+✅ Works offline<br>
+✅ Data privacy<br>
 
 
 ## Exercise 4.6 - Integrate with Match Finding
@@ -318,12 +318,12 @@ Now that you have intelligent semantic matching, let's wrap it all in a conversa
 
 ## Summary
 
-In this exercise, you:
-- ✅ Added semantic search with local embeddings
-- ✅ Implemented vector similarity
-- ✅ Tested meaning-based matching
-- ✅ Understood embeddings and vectors
-- ✅ Improved real-world matching
+In this exercise, you:<br>
+✅ Added semantic search with local embeddings<br>
+✅ Implemented vector similarity<br>
+✅ Tested meaning-based matching<br>
+✅ Understood embeddings and vectors<br>
+✅ Improved real-world matching<br>
 
 **Time spent:** ~20 minutes  
 **Model size:** ~25MB  

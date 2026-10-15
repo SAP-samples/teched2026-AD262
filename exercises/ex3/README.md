@@ -257,16 +257,16 @@ Claude will join supplier data and filter.
 
 ### What's Exposed
 
-MCP exposes:
-- ✅ Read access to business data
-- ✅ Write operations you configure
-- ✅ Actions you explicitly allow
+MCP exposes:<br>
+✅ Read access to business data<br>
+✅ Write operations you configure<br>
+✅ Actions you explicitly allow<br>
 
 ### What's Protected
 
-- ❌ Database credentials (never exposed)
-- ❌ Internal implementation
-- ❌ Operations without @mcp annotations
+❌ Database credentials (never exposed)
+❌ Internal implementation
+❌ Operations without @mcp annotations
 
 ### Best Practices
 
@@ -317,12 +317,12 @@ Now that Claude can access your data via MCP, let's add semantic search so it ca
 
 ## Summary
 
-In this exercise, you:
-- ✅ Exposed CAP service over MCP
-- ✅ Connected Claude Desktop
-- ✅ Queried business data conversationally
-- ✅ Understood MCP architecture
-- ✅ Tested complex queries
+In this exercise, you:<br>
+✅ Exposed CAP service over MCP<br>
+✅ Connected Claude Desktop<br>
+✅ Queried business data conversationally<br>
+✅ Understood MCP architecture<br>
+✅ Tested complex queries<br>
 
 **Time spent:** ~15 minutes  
 **MCP tools exposed:** ~10 (entities + actions)  
