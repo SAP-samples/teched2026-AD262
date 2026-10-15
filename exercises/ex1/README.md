@@ -61,11 +61,17 @@ Copy this exact prompt into Claude:
 ```
 Build Maria's invoice matching UI in app/matching/.
 
-Left panel: list of open invoices (supplier, amount, description). Right panel: list of open purchase orders (supplier, amount, description).
+Left panel: list of open invoices (supplier, amount, description). Right panel: list of open purchase orders 
+(supplier, amount, description).
 
-When Maria selects an invoice and a PO, show a "Record Match" button. Clicking it creates a match via POST, linking the selected invoice and PO with status "proposed". Recording a match should mark the linked invoice as matched and close its purchase order so both leave the open lists; rejecting the match should reopen both, while approving or escalating keeps them closed.
+When Maria selects an invoice and a PO, show a "Record Match" button. Clicking it creates a match via POST, 
+linking the selected invoice and PO with status "proposed". Recording a match should mark the linked invoice 
+as matched and close its purchase order so both leave the open lists; rejecting the match should reopen both, 
+while approving or escalating keeps them closed.
 
-Below the two panels, show a "Pending decisions" section listing all match decisions with status proposed. Each row shows the linked invoice description, PO description, match confidence, match rationale, and two buttons: Approve and Reject. Approve calls match decisions approve action. Reject calls match decisions reject action.
+Below the two panels, show a "Pending decisions" section listing all match decisions with status proposed. 
+Each row shows the linked invoice description, PO description, match confidence, match rationale, and two 
+buttons: Approve and Reject. Approve calls match decisions approve action. Reject calls match decisions reject action.
 
 After any action that changes what belongs in a list, re-fetch and re-render every affected list.
 

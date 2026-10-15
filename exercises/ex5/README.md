@@ -201,7 +201,9 @@ This is AI-powered AP processing!
 Copy this exact prompt into Claude:
 
 ```
-/cap-developer Generate additional sample data where the amount is not exactly matching of the inovices and purchase orders. Amounts should diverge between 2-10%. One invoice should have an identifier INV-TEST-001. Another should have a blocked supplier called Beta Corp with a perfect match.
+/cap-developer Generate additional sample data where the amount is not exactly matching of the inovices and 
+purchase orders. Amounts should diverge between 2-10%. One invoice should have an identifier INV-TEST-001. 
+Another should have a blocked supplier called Beta Corp with a perfect match.
 ```
 
 ## Exercise 5.6 - Create AP Domain Policy Skill
@@ -215,13 +217,17 @@ Now let's create a skill that encodes business rules.
 Copy this exact prompt into Claude:
 
 ```
-Create a skill that gives the matching agent its AP domain policy. It should guide how the agent proposes and confirms matches - not what tools it has.
+Create a skill that gives the matching agent its AP domain policy. It should guide how the agent proposes and 
+confirms matches - not what tools it has.
 
 Encode:
-- Amount tolerance: within 2% is a clean match; 2-5% requires a price-variance note in the rationale; over 5% must escalate, never auto-confirm.
-- Confidence rubric: weight an exact supplier + amount match highest; a semantic-description match (from the Vector search) lower, a partial lowest.
+- Amount tolerance: within 2% is a clean match; 2-5% requires a price-variance note in the rationale; over 5% 
+must escalate, never auto-confirm.
+- Confidence rubric: weight an exact supplier + amount match highest; a semantic-description match (from 
+the Vector search) lower, a partial lowest.
 - Distrust a high similarity score when the amounts diverge.
-- Blocked-supplier rule: if the supplier is blocked for posting, never propose confirm regardless of match quality — flag it for Maria with the blocking reason.
+- Blocked-supplier rule: if the supplier is blocked for posting, never propose confirm regardless of match 
+quality — flag it for Maria with the blocking reason.
 - Rationale quality: every proposal must state which signals matched and why, in one or two sentences Maria can act on.
 ```
 
@@ -302,7 +308,6 @@ Check the skill includes:
 ✅ States which signals matched<br>
 ✅ Actionable for Maria<br>
 
-Save the skill files.
 
 ## Exercise 5.7 - Test the AP Policy Skill
 
