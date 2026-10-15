@@ -1,4 +1,4 @@
-# Exercise 0 - Initialize and Generate App
+# Exercise 0 — Initialize and Generate App
 
 In this exercise, you will initialize a CAP project and use Claude to generate a complete invoice matching application for Maria, an AP (Accounts Payable) clerk.
 
@@ -19,7 +19,7 @@ An intelligent invoice matching system where Maria can:
 - Track confidence, rationale, and outcome for each decision
 - Follow a workflow with valid state transitions
 
-## Exercise 0.1 - Initialize CAP Project
+## Exercise 0.1 — Initialize CAP Project
 
 First, let's create the basic project structure.
 
@@ -58,11 +58,12 @@ You should see the CAP server starting. With `Ctrl+C` you can stop the server wh
 
 <br>![Empty preview](/exercises/ex0/images/00_00_0010.png)
 
-## Exercise 0.2 - Generate the Application with Claude
+## Exercise 0.2 — Generate the Application with Claude
 
-Now comes the exciting part - we'll use Claude to generate the complete application!
+Now comes the exciting part — we'll use Claude to generate the complete application!
 
-> 💡 **CAP & AI-Assisted Development**: Instead of manually writing hundreds of lines of code, you'll use out of the box capabilities of CAP combined with a single Claude prompt to generate everything.
+> [!NOTE]
+> Instead of manually writing hundreds of lines of code, you'll use out of the box capabilities of CAP combined with a single Claude prompt to generate everything.
 
 👉 Start Claude Code by entering claude in the terminal, which is not running the preview.
 
@@ -88,7 +89,7 @@ In this exercise we are using the [CAP SKills library](https://github.com/capire
 
 👉 Copy this exact prompt into Claude:
 
-```
+```text
 /cap-developer Build a CAP app for Maria, an AP clerk who matches incoming supplier invoices 
 to open purchase orders before releasing payment.
 
@@ -150,7 +151,7 @@ Review what Claude generated:
 
 </details>
 
-## Exercise 0.3 - Preview and Test
+## Exercise 0.3 — Preview and Test
 
 This will start the CAP application and loads the sample data.
 
@@ -173,7 +174,7 @@ You should see:
 
 <br>![CAP Welcome Page](/exercises/ex0/images/00_00_0020.png)
 
-## Exercise 0.4 - Understand the Data Model
+## Exercise 0.4 — Understand the Data Model
 
 Let's examine what was generated in more detail.
 
@@ -206,8 +207,9 @@ Each decision records Maria's matching work:
 
 ### State Transitions
 
-The workflow enforces valid transitions. You can find the implementation under srv/invoice-matching.cds
-```
+The workflow enforces valid transitions. You can find the implementation under `srv/invoice-matching.cds`:
+
+```text
 proposed → approved ✓
 proposed → rejected ✓
 proposed → escalated ✓
@@ -216,7 +218,7 @@ rejected → [final state] ✗
 escalated → [final state] ✗
 ```
 
-## Exercise 0.5 - Test Sample Data
+## Exercise 0.5 — Test Sample Data
 
 Let's verify the sample data is realistic and useful. If your service is named differently than invoice-matching, replace the name in the url.
 
