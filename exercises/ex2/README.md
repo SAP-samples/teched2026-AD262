@@ -19,10 +19,10 @@ Enhanced invoice matching with supplier insights:
 - **Posting Block:** Whether supplier is blocked
 - **Block Reason:** Why they're blocked (if applicable)
 
-This helps Maria identify issues like:
-- ❌ Supplier blocked for posting
-- ⚠️ Unusual payment terms
-- ✅ Verified supplier ready for payment
+This helps Maria identify issues like:<br>
+❌ Supplier blocked for posting<br>
+⚠️ Unusual payment terms<br>
+✅ Verified supplier ready for payment<br>
 
 ## Exercise 2.1 - Import the Supplier Data Product
 
@@ -204,7 +204,8 @@ Let's see what happens when Maria tries to match an invoice with a blocked suppl
 - ❌ Match cannot be approved until block is resolved
 - 📋 Rationale should mention the blocking reason
 
-## Exercise 2.7 - Explore Data Product Patterns
+
+<details><summary><h2>Optional: Explore Data Product Patterns</h2></summary>
 
 Let's understand what happened under the hood.
 
@@ -247,6 +248,8 @@ entity Invoices {
   supplier : Association to Suppliers.A_BusinessPartner;
 }
 ```
+
+</details>
 
 ## What You've Accomplished
 

@@ -139,13 +139,7 @@ Time to see it in action!
 cds watch
 ```
 
-2. In a new terminal, start the React dev server:
-```bash
-cd app/matching
-npm start
-```
-
-3. Open your browser at `http://localhost:3000`
+2. Open your browser at `http://localhost:4004` and open the generated UI.
 
 You should see:
 - **Left Panel:** List of open invoices
@@ -194,40 +188,6 @@ What happens:
 
 
 
-## Exercise 1.6 - Explore the Code
-
-Take a moment to understand what Claude generated.
-
-### App.jsx Structure
-
-```javascript
-function App() {
-  const [invoices, setInvoices] = useState([]);
-  const [pos, setPOs] = useState([]);
-  const [decisions, setDecisions] = useState([]);
-  const [selectedInvoice, setSelectedInvoice] = useState(null);
-  const [selectedPO, setSelectedPO] = useState(null);
-
-  // Fetch functions
-  // Record match function
-  // Action functions (approve, reject)
-  
-  return (
-    <div className="app">
-      <InvoiceList ... />
-      <POList ... />
-      <PendingDecisions ... />
-    </div>
-  );
-}
-```
-
-**Key Patterns:**<br>
-✅ State hooks for data and selections<br>
-✅ Effect hooks to fetch on mount<br>
-✅ Handler functions passed to child components<br>
-✅ Re-fetch after mutations<br>
-
 ## What You've Accomplished
 
 ✅ Added React to your CAP project  
@@ -253,7 +213,6 @@ function App() {
 **What You Learned:**
 - How to describe UI requirements to AI
 - React component patterns
-- OData integration with CAP
 - State management basics
 
 <details><summary><h2>Troubleshooting</h2></summary>

@@ -156,7 +156,7 @@ Review what Claude generated:
 
 ## Exercise 0.3 - Preview and Test
 
-This CAP application and loads the sample data.
+This will start the CAP application and loads the sample data.
 
 1. If you ended the preview simply start the CAP server again. If it is still running in the other terminal skip this step.
 ```bash

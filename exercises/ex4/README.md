@@ -48,6 +48,8 @@ pwd
 npm add -D @cap-js/ai @cap-js/sqlite@^3.1 @huggingface/hub@^2.15.0 @huggingface/tokenizers@0.1.3 onnxruntime-node@1.20.1
 ```
 
+The packages will download. This may take a minute.
+
 **What these packages do:**
 - `@cap-js/ai` - CAP AI integration layer
 - `@cap-js/sqlite@^3.1` - SQLite with vector support
@@ -55,7 +57,7 @@ npm add -D @cap-js/ai @cap-js/sqlite@^3.1 @huggingface/hub@^2.15.0 @huggingface/
 - `@huggingface/tokenizers` - Text tokenization
 - `onnxruntime-node` - Run ML models locally
 
-3. The packages will download. This may take a minute.
+
 
 ## Exercise 4.2 - Add Semantic Search with Claude
 
@@ -98,27 +100,28 @@ Claude should:
    - Expose searchMatches as MCP tool
    - Add description for Claude to understand
 
-### Review the Generated Code
+
+<details><summary><h2>Optional Review the Generated Code</h2></summary>
 
 Check these key features:
 
 **Data Model Extensions:**<br>
-✅ Are vector fields added to Invoices and POs? Check the schema file.<br>
-✅ Is the vector dimension specified?<br>
-✅ Are vectors configured correctly?<br>
+- Are vector fields added to Invoices and POs? Check the schema file.<br>
+- Is the vector dimension specified?<br>
+- Are vectors configured correctly?<br>
 
 **AI Configuration:**<br>
-✅ Is @cap-js/ai configured in package.json?<br>
-✅ Is a local model specified (e.g., "sentence-transformers/all-MiniLM-L6-v2")?<br>
-✅ Are dimensions matching the model?<br>
+- Is @cap-js/ai configured in package.json?<br>
+- Is a local model specified (e.g., "sentence-transformers/all-MiniLM-L6-v2")?<br>
+- Are dimensions matching the model?<br>
 
 **Service Implementation:**<br>
-✅ Are embeddings generated automatically on create/update?<br>
-✅ Is there a searchMatches action?<br>
-✅ Does it calculate cosine similarity?<br>
-✅ Does it return ranked results?<br>
+- Are embeddings generated automatically on create/update?<br>
+- Is there a searchMatches action?<br>
+- Does it calculate cosine similarity?<br>
+- Does it return ranked results?<br>
 
-Save all the generated files.
+</details>
 
 ## Exercise 4.3 - Test
 

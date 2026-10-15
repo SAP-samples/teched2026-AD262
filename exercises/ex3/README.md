@@ -264,9 +264,9 @@ MCP exposes:<br>
 
 ### What's Protected
 
-❌ Database credentials (never exposed)
-❌ Internal implementation
-❌ Operations without @mcp annotations
+❌ Database credentials (never exposed)<br>
+❌ Internal implementation<br>
+❌ Operations without @mcp annotations<br>
 
 ### Best Practices
 
