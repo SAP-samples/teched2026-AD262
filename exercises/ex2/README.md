@@ -302,13 +302,7 @@ Support suppliers with different payment terms in different company codes
 ```
 </details>
 
-## Next Steps
 
-Now that Maria can see supplier details and blocking status, let's make the entire service accessible to AI via MCP!
-
-**Continue to [Exercise 3 — Add MCP Server](../ex3/README.md)** to expose your service over the Model Context Protocol.
-
----
 
 ## Summary
 
@@ -323,4 +317,9 @@ In this exercise, you:
 **Data product APIs used:** 1 (Business Partner)  
 **Lines of integration code:** ~0 (Claude generated it!)
 
-[Next exercise](../ex3/README.md)
+## Next Steps
+
+Now that Maria can see supplier details and blocking status, let's make the entire service accessible to AI via MCP!
+
+**Continue to [Exercise 3 — Add MCP Server](../ex3/README.md)** to expose your service over the Model Context Protocol.
+

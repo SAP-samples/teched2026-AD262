@@ -256,26 +256,5 @@ A complete, production-ready AI-powered invoice matching system with a React UI,
 
 **Congratulations!**
 
----
 
-## Notes for Instructors
 
-This exercise is **optional** because:
-- Participants need SAP BTP and AI Core access for production behavior
-- Local mock is sufficient to demonstrate the pattern
-- More meaningful after participants understand draft lifecycle from earlier exercises
-
-**When to include:**
-- Extended workshops (2+ hours total)
-- Participants with BTP access who want to see real SAP-RPT-1 output
-- Sessions focused on SAP AI Core capabilities and BTP integration
-
-**When to skip:**
-- Limited workshop time
-- Focus on MCP, agents, or semantic search (covered in earlier exercises)
-- Groups without BTP access (mock still works but is less impressive)
-
-**Key talking points:**
-- The plugin is a first-class example of CAP's model-driven philosophy applied to AI
-- Zero-code AI integration = lower risk and faster development
-- Service binding is the only difference between local mock and production

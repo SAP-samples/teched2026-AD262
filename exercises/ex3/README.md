@@ -322,13 +322,8 @@ Create MCP resources for common queries like "unmatched-invoices" and "pending-d
 ```
 </details>
 
-## Next Steps
 
-Now that Claude can access your data via MCP, let's add semantic search so it can find matches based on meaning, not just keywords!
 
-**Continue to [Exercise 4 — Add Semantic Search](../ex4/README.md)** to implement AI-powered similarity matching.
-
----
 
 ## Summary
 
@@ -343,4 +338,9 @@ In this exercise, you:
 **MCP tools exposed:** ~10 (entities + actions)  
 **Custom API code:** 0 lines!
 
-[Next exercise](../ex4/README.md)
+
+## Next Steps
+
+Now that Claude can access your data via MCP, let's add semantic search so it can find matches based on meaning, not just keywords!
+
+**Continue to [Exercise 4 — Add Semantic Search](../ex4/README.md)** to implement AI-powered similarity matching.

@@ -314,13 +314,7 @@ Combine semantic search with exact keyword matching for optimal results
 ```
 </details>
 
-## Next Steps
 
-Now that you have intelligent semantic matching, let's wrap it all in a conversational AI agent that can help Maria find and approve matches!
-
-**Continue to [Exercise 5 - Add Agent with Skills](../ex5/README.md)** to build an intelligent assistant for Maria.
-
----
 
 ## Summary
 
@@ -336,4 +330,9 @@ In this exercise, you:<br>
 **Embedding dimensions:** 384  
 **Search quality:** 🚀 Much better!
 
-Semantic search finds matches humans would spot! Next: Intelligent agent. 🤖
+
+## Next Steps
+
+Now that you have intelligent semantic matching, let's wrap it all in a conversational AI agent that can help Maria find and approve matches!
+
+**Continue to [Exercise 5 - Add Agent with Skills](../ex5/README.md)** to build an intelligent assistant for Maria.
