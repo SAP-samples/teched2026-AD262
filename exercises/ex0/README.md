@@ -23,33 +23,33 @@ An intelligent invoice matching system where Maria can:
 
 First, let's create the basic project structure.
 
-1. Open your terminal and navigate to your working directory.
+👉 Open your terminal and navigate to your working directory.
 
-2. Initialize a new Node.js CAP project:
+👉 Initialize a new Node.js CAP project:
 ```bash
 cds init invoice-matching
 ```
 
 This creates a new CAP project with folders for database (`db/`), services (`srv/`), and app (`app/`).
 
-3. Navigate into the project:
+👉 Navigate into the project:
 ```bash
 cd invoice-matching
 ```
 
-4. CAP supports JAVA and Node.js as runtime. For this project we choose Node.js:
+👉 CAP supports JAVA and Node.js as runtime. For this project we choose Node.js:
 ```bash
 cds add nodejs
 ```
 
-5. We use a SQLite database to speed up the local development. For productive deployment you can choose SAP HANA. Add SQLite database with this command:
+👉 We use a SQLite database to speed up the local development. For productive deployment you can choose SAP HANA. Add SQLite database with this command:
 ```bash
 cds add sqlite
 ```
 
 This configures your project for local development with Node.js and SQLite.
 
-6. Verify the setup, split your terminal and run:
+👉 Verify the setup, split your terminal and run:
 ```bash
 cds watch
 ```
@@ -64,7 +64,7 @@ Now comes the exciting part - we'll use Claude to generate the complete applicat
 
 > 💡 **CAP & AI-Assisted Development**: Instead of manually writing hundreds of lines of code, you'll use out of the box capabilities of CAP combined with a single Claude prompt to generate everything.
 
-Start Claude Code by entering claude in the terminal, which is not running the preview. 
+👉 Start Claude Code by entering claude in the terminal, which is not running the preview.
 
 ```bash
 claude
@@ -73,20 +73,20 @@ claude
 ### Plugin: Claude Code
 In this exercise we are using the [CAP SKills library](https://github.com/capire/skills). A shared library of reusable skills, agents, and prompts for the team. Compatible with OpenCode, Claude Code, and other AI coding tools that follow the open standards.
 
-Inside Claude Code, add the plugin:
+👉 Inside Claude Code, add the plugin:
 
 ```bash
 /plugin marketplace add capire/skills
 ```
 
-And install it. While installing select "project scope":
+👉 And install it. While installing select "project scope":
 ```bash
 /plugin install cap-developer@cap
 ```
 
 ### The Claude Prompt
 
-Copy this exact prompt into Claude:
+👉 Copy this exact prompt into Claude:
 
 ```
 /cap-developer Build a CAP app for Maria, an AP clerk who matches incoming supplier invoices 
@@ -111,7 +111,7 @@ Use the new case when assert constraints when possible to avoid custom code: htt
 
 Simply approve all changes. That's it. Do *not* switch on auto approve that you can follow the changes it does.
 
-### What Claude will Generate
+### What Claude will generate
 
 Claude should generate:
 
@@ -123,12 +123,9 @@ Claude should generate:
 2. **Service Definition** (`srv/matching-service.cds`):
    - Service exposing all entities
    - Actions for approve, reject, escalate operations
+   - Status Flow annotations like:  approve @from: [ #Proposed ] @to: #Approved;
 
-3. **Service Implementation** (`srv/matching-service.js`):
-   - Workflow state transition logic
-   - Business rules enforcement
-
-4. **Sample Data** (`db/data/` folder):
+3. **Sample Data** (`db/data/` folder):
    - CSV files with realistic invoices
    - CSV files with matching purchase orders
    - Test data for development
@@ -145,7 +142,6 @@ Review what Claude generated:
 **Check the Service:**<br>
 ✅ Are all entities exposed?<br>
 ✅ Are there actions for approve, reject, escalate?<br>
-✅ Is the service implementation included?<br>
 
 **Check the Sample Data:**<br>
 ✅ Are there CSV files for each entity?<br>
@@ -158,19 +154,19 @@ Review what Claude generated:
 
 This will start the CAP application and loads the sample data.
 
-1. If you ended the preview simply start the CAP server again. If it is still running in the other terminal skip this step.
+👉 If you ended the preview simply start the CAP server again. If it is still running in the other terminal skip this step.
 ```bash
 cds watch
 ```
 
-2. Open your browser at `http://localhost:4004`
+👉 Open your browser at `http://localhost:4004`
 
 You should see:
 - Welcome page with the service endpoints
 - Link to the matching service
 - Sample data loaded
 
-3. Click on the matching service to explore:
+👉 Click on the matching service to explore:
 - Browse Invoices - you should see sample invoices
 - Browse PurchaseOrders - you should see sample POs
 - Browse MatchDecisions - should be empty initially
@@ -210,7 +206,7 @@ Each decision records Maria's matching work:
 
 ### State Transitions
 
-The workflow enforces valid transitions. You can find the implementation under srv/inoice-matching.cds
+The workflow enforces valid transitions. You can find the implementation under srv/invoice-matching.cds
 ```
 proposed → approved ✓
 proposed → rejected ✓
@@ -224,17 +220,17 @@ escalated → [final state] ✗
 
 Let's verify the sample data is realistic and useful. If your service is named differently than invoice-matching, replace the name in the url.
 
-1. In your browser, navigate to `http://localhost:4004/odata/v4/invoice-matching/Invoices`
+👉 In your browser, navigate to `http://localhost:4004/odata/v4/invoice-matching/Invoices`
 
-2. Check that invoices have:
+Check that invoices have:
    - Different suppliers
    - Varying amounts
    - Descriptive text (not just "Invoice 1")
    - All status = "open" (nothing matched yet)
 
-3. Navigate to `http://localhost:4004/odata/v4/invoice-matching/PurchaseOrders`
+👉 Navigate to `http://localhost:4004/odata/v4/invoice-matching/PurchaseOrders`
 
-4. Check that POs have:
+Check that POs have:
    - Same suppliers as invoices (some overlap)
    - Similar but not identical amounts
    - Descriptions that are semantically similar to invoice descriptions
@@ -263,7 +259,7 @@ Let's verify the sample data is realistic and useful. If your service is named d
 - focus on domain and reduce technical dept
 
 **AI-Assisted:**
-- 5 minutes with Agntic Coding, instead of 30-45 minutes of typing
+- 5 minutes with Agentic Coding, instead of 30-45 minutes of typing
 - Meaningful sample data
 - Consistent and complete
 
@@ -301,11 +297,6 @@ I got this error: [paste error]. Please fix the code.
 
 </details>
 
-## Next Steps
-
-Now that you have a working CAP application with data, you're ready to build the user interface!
-
-**Continue to [Exercise 1 - Build React UI](../ex1/README.md)** to create Maria's matching interface.
 
 ---
 
@@ -320,6 +311,11 @@ In this exercise, you:<br>
 
 **Time spent:** ~20 minutes  
 **Lines of code written:** ~0 (AI did it all!)  
-**Lines of code reviewed:** ~200-300
+**Lines of code reviewed:** ~100-200
 
-Next up: [Exercise 1 - Build React UI](../ex1/README.md) in Exercise 1! 🚀
+## Next Steps
+
+Now that you have a working CAP application with data, you're ready to build the user interface!
+
+**Continue to [Exercise 1 - Build React UI](../ex1/README.md)** to create Maria's matching interface.
+
