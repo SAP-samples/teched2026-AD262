@@ -137,7 +137,6 @@ The first time it runs, it will:
 - Generate embeddings for existing data
 - This may take 30-60 seconds
 
-3. Wait for "server started" message
 
 ## Exercise 4.4 — Test Semantic Search with Claude
 

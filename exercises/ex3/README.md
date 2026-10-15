@@ -56,13 +56,13 @@ You should see a message indicating MCP is enabled.
 
 Now we'll manually configure MCP for your service.
 
-👉 Annotate the service in `srv/matching-service.cds` — add this line at the end of the file:
+👉 Annotate the service in `srv/matching-service.cds` — add this line at the end of the file. replace `nameOfYourMatchingService` with the service name Claude chose — check your `.cds` file.
 ```cds
 annotate nameOfYourMatchingService with @odata @mcp;
 ```
 
 > [!NOTE]
-> If you add only `@mcp` without `@odata`, the service will only serve MCP. Including `@odata` here ensures both protocols remain active.
+> If you add only `@mcp` without `@odata`, the service will only serve MCP. Including `@odata` here ensures both protocols remain active. If you run cds watch you will see that both protocols are served.
 
 
 ## Exercise 3.3 — Verify MCP Connection

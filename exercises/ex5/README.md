@@ -85,6 +85,8 @@ annotate MatchingService with @agent;
 annotate MatchingService.approve with @agent.hitl;
 ```
 
+> [!TIP]
+> hitl stands for (Human In The Loop).
 
 ### Review the Generated Code
 

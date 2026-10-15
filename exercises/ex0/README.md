@@ -48,6 +48,10 @@ cds add sqlite
 ```
 
 This configures your project for local development with Node.js and SQLite.
+👉 Now let's install it.
+```bash
+npm install
+```
 
 👉 Verify the setup, split your terminal and run:
 ```bash
@@ -105,7 +109,7 @@ The system should track who made the decision and when.
 The decision workflow should enforce valid transitions: a proposed match can be approved, rejected, 
 or escalated; once approved it can only be escalated; rejected and escalated are final.
 
-Generate realistic sample data. Use SQLite for local dev. 
+Generate realistic sample data that also include data about furniture and laptops. Use SQLite for local dev. 
 Ensure to use cap status-flows are used for the worklow: https://cap.cloud.sap/docs/guides/services/status-flows 
 Use the new case when assert constraints when possible to avoid custom code: https://cap.cloud.sap/docs/guides/services/constraints#assert-constraint
 ```
