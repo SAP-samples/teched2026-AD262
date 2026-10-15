@@ -105,13 +105,13 @@ The decision workflow should enforce valid transitions: a proposed match can be 
 or escalated; once approved it can only be escalated; rejected and escalated are final.
 
 Generate realistic sample data. Use SQLite for local dev. 
-Ensure to use cap status-flows https://cap.cloud.sap/docs/guides/services/status-flows 
-and the new case when assert constraints when possible https://cap.cloud.sap/docs/guides/services/constraints#assert-constraint
+Ensure to use cap status-flows are used for the worklow: https://cap.cloud.sap/docs/guides/services/status-flows 
+Use the new case when assert constraints when possible to avoid custom code: https://cap.cloud.sap/docs/guides/services/constraints#assert-constraint
 ```
 
 Simply approve all changes. That's it. Do *not* switch on auto approve that you can follow the changes it does.
 
-### What Claude Will Generate
+### What Claude will Generate
 
 Claude should generate:
 
@@ -259,7 +259,7 @@ Let's verify the sample data is realistic and useful. If your service is named d
 
 **CAP:**
 - initial and add capabilities with CDS in seconds
-- avoid custom code with CAP features like constraints and status-flows
+- avoid custom code with CAP features like constraints, status-flows or managed aspect
 - focus on domain and reduce technical dept
 
 **AI-Assisted:**
