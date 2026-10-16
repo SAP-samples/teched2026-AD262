@@ -129,12 +129,36 @@ Claude should generate:
 2. **Service Definition** (`srv/invoice-matching-service.cds`):
    - Service exposing all entities
    - Actions for approve, reject, escalate operations
-   - Status Flow annotations like:  approve @from: [ #Proposed ] @to: #Approved;
+   - **Status Flows** — declarative workflow transitions like `approve @from: [ #Proposed ] @to: #Approved;` (see below)
+   - **Assert constraints** — declarative business rules enforced by CAP without custom code (see below)
 
 3. **Sample Data** (`db/data/` folder):
    - CSV files with realistic invoices
    - CSV files with matching purchase orders
    - Test data for development
+
+#### Why Status Flows?
+
+CAP's [`@flow.status`](https://cap.cloud.sap/docs/guides/services/status-flows) feature lets you declare valid workflow transitions as annotations directly in the service definition. Instead of writing `if/else` logic in JavaScript to check whether a transition is allowed, you describe the allowed paths declaratively:
+
+```cds
+action approve @from: [ #Proposed ] @to: #Approved;
+action reject  @from: [ #Proposed ] @to: #Rejected;
+```
+
+CAP enforces these rules automatically — calling `approve` on an already-approved decision returns an error without a single line of custom validation code.
+
+#### Why Assert Constraints?
+
+CAP's [`@assert`](https://cap.cloud.sap/docs/guides/services/constraints#assert-constraint) annotations let you express business rules directly on the model:
+
+```cds
+entity Invoices {
+  status : String @assert.range: [ 'open', 'matched', 'escalated' ];
+}
+```
+
+Instead of writing handler code to validate input values, CAP rejects invalid data at the framework level. Combined with Status Flows, this means **the entire workflow and validation logic lives in the model** — no custom service handlers needed.
 
 <details><summary><h2>Optional: Review the AI generated code</h2></summary>
 
