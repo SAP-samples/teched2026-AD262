@@ -82,9 +82,9 @@ and make sure at least one supplier is blocked so I can see how that looks.
 
 Claude should:
 
-1. **Extend the Data Model** (`db/schema.cds`):
-   - Add association from Invoice to Supplier
-   - Add supplier details fields
+1. **Extend the Data Model**:
+   - A new cds file with a supplier consumption view will be created — a projection that maps the imported definitions to your domain model, renaming and flattening as needed
+   - should be under apis/imported - supplier.cds
 
 2. **Update Service Implementation** (`srv/invoice-matching-service.js`):
    - Add logic to fetch supplier details
