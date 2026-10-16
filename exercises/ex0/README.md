@@ -8,6 +8,7 @@ By the end of this exercise, you will:
 - Initialize a CAP project with Node.js and SQLite
 - Use Claude with the [CAP Skills library](https://github.com/capire/skills) to generate a complete data model
 - Understand workflow state transitions
+- Understand how Assert Constraints can avoid custom code
 - Have realistic sample data ready to use
 
 ## What You Will Build
