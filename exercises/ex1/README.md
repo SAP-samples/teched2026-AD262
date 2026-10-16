@@ -128,7 +128,7 @@ We need to ensure the service implementation supports the UI actions.
 👉 Ask Claude to verify/generate the service implementation:
 
 ```text
-Make sure srv/invoice-matching-service.js has these implementations:
+Make sure the invoice matching service has these implementations:
 1. When a match is created with status "proposed", mark the invoice as "matched" and set PO isOpen to false
 2. Action "approve" changes match outcome to "approved"  
 3. Action "reject" changes match outcome to "rejected", reopens the invoice (status "open") and PO (isOpen true)
