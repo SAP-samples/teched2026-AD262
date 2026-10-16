@@ -317,8 +317,8 @@ In this exercise, you:
 - Understood data product patterns
 
 **Time spent:** ~15 minutes  
-**Data product APIs used:** 1 (Business Partner)  
-**Lines of integration code:** ~0 (Claude generated it!)
+**Data product APIs used:** 1 (Supplier)  
+**Lines of integration code:** ~0 (CDS + CAP Skill + AI generated it!)
 
 ## Next Steps
 
