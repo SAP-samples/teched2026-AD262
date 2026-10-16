@@ -73,7 +73,7 @@ Pull the name from the Supplier record and the payment/blocking fields from its 
 A few things to keep in mind:
 
 Invoices only carry the supplier's name today, not an ID, so match suppliers by name for now.
-Ensure to update the schema.cds for that.
+Ensure to update the schema.cds for that to have a clean association in the data model.
 
 Give me realistic mock supplier data that lines up with the suppliers already in the invoices,
 and make sure at least one supplier is blocked so I can see how that looks.
