@@ -45,13 +45,6 @@ npm add @cap-js/mcp
 
 This adds MCP capabilities to your CAP service.
 
-👉 Restart the CAP service:
-```bash
-cds watch
-```
-
-You should see a message indicating MCP is enabled.
-
 ## Exercise 3.2 — Expose Service Over MCP
 
 Now we'll manually configure MCP for your service.
