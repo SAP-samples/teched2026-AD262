@@ -62,7 +62,7 @@ annotate InvoiceMatchingService with @odata @mcp;
 
 Let's check that Claude can see your MCP server.
 
-👉 Open Claude in a new terminal:
+👉 Open Claude in a new terminal or restart Claude if it is still running:
 ```bash
 claude
 ```
