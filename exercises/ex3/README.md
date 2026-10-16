@@ -304,22 +304,6 @@ Open `localhost:4004` and check if the mcp protocol is served.
 
 </details>
 
-<details><summary><h2>Optional Enhancements (can be skipped onsite at TechEd)</h2></summary>
-
-### Add Descriptions
-
-```text
-Add detailed descriptions to each MCP tool so Claude understands when to use them
-```
-
-### Add Resources
-
-```text
-Create MCP resources for common queries like "unmatched-invoices" and "pending-decisions"
-```
-</details>
-
-
 
 
 ## Summary
