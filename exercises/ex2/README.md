@@ -60,7 +60,8 @@ Now we'll enhance the application to show supplier information.
 👉 Copy this exact prompt into Claude:
 
 ```text
-/cap-add-remote-service  The Supplier data product is imported under apis/imported/. For each invoice Maria reviews, I want to see key details about that supplier alongside it, so she can spot problems before releasing payment.
+/cap-add-remote-service  The Supplier data product is imported under apis/imported/. For each invoice Maria reviews,
+I want to see key details about that supplier alongside it, so she can spot problems before releasing payment.
 
 Add a supplier details section to each invoice showing:
 - the supplier's name
@@ -68,11 +69,13 @@ Add a supplier details section to each invoice showing:
 - whether they're blocked for posting
 - the payment blocking reason, if any
 
-Pull the name from the Supplier record and the payment/blocking fields from its company-code record. A few things to keep in mind:
+Pull the name from the Supplier record and the payment/blocking fields from its company-code record.
+A few things to keep in mind:
 
 Invoices only carry the supplier's name today, not an ID, so match suppliers by name for now.
 
-Give me realistic mock supplier data that lines up with the suppliers already in the invoices, and make sure at least one supplier is blocked so I can see how that looks.
+Give me realistic mock supplier data that lines up with the suppliers already in the invoices,
+and make sure at least one supplier is blocked so I can see how that looks.
 ```
 
 ### What Claude Will Generate
