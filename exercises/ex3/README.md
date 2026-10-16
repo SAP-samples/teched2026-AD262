@@ -94,6 +94,10 @@ What happens:
 
 <br>![Potential Matches](/exercises/ex3/images/03_03_0010.png)
 
+You can also see in the terminal the calls that are done by the MCP
+
+<br>![mcp calls](/exercises/ex3/images/03_04_0020.png)
+
 ### Test Prompt 2: Find Specific Invoice
 
 👉 Type:
