@@ -1,5 +1,7 @@
 # AD262 - Agentic CAP: Build MCP Servers and Enterprise AI Agents
 
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/teched2026-AD262)](https://api.reuse.software/info/github.com/SAP-samples/teched2026-AD262)
+
 ## Description
 
 This repository contains the material for the SAP TechEd 2026 session **AD262 - Agentic CAP: Build MCP Servers and Enterprise AI Agents**.
