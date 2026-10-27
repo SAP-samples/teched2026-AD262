@@ -367,7 +367,6 @@ Find matches for the cloud storage invoice
 - Rationale: "Descriptions match well, but amount mismatch suggests different services - likely annual vs monthly"
 - Recommendation: Escalate
 
-<br>![Policy Enforcement](/exercises/ex5/images/05_06_0010.png)
 
 ## Exercise 5.8 — Understand Agent Architecture
 
