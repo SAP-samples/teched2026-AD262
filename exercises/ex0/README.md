@@ -65,7 +65,7 @@ You should see the CAP server starting. With `Ctrl+C` you can stop the server wh
 
 ## Exercise 0.2 — Generate the Application with Claude
 
-## Install the CAP documentation MCP server
+### Install the CAP documentation MCP server
 
 The CAP skills work best when they can look up current CAP docs instead of guessing. The
 **CAP MCP docs server** (`@cap-js/mcp-server`, binary `cds-mcp`) provides exactly that — tools to
@@ -82,7 +82,7 @@ claude mcp add cds-mcp -- npx -y @cap-js/mcp-server
 > [!NOTE]
 > The first run downloads a small embedding model, so allow a moment and a network connection.
 
-## Work with Claude
+### Work with Claude
 
 Now comes the exciting part — we'll use Claude to generate the complete application!
 
