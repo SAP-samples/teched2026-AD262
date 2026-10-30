@@ -65,17 +65,6 @@ You should see the CAP server starting. With `Ctrl+C` you can stop the server wh
 
 ## Exercise 0.2 — Generate the Application with Claude
 
-Now comes the exciting part — we'll use Claude to generate the complete application!
-
-> [!NOTE]
-> Instead of manually writing hundreds of lines of code, you'll use out of the box capabilities of CAP combined with a single Claude prompt to generate everything.
-
-👉 Start Claude Code by entering claude in the terminal, which is not running the preview.
-
-```bash
-claude
-```
-
 ## Install the CAP documentation MCP server
 
 The CAP skills work best when they can look up current CAP docs instead of guessing. The
@@ -92,6 +81,19 @@ claude mcp add cds-mcp -- npx -y @cap-js/mcp-server
 
 > [!NOTE]
 > The first run downloads a small embedding model, so allow a moment and a network connection.
+
+## Work with Claude
+
+Now comes the exciting part — we'll use Claude to generate the complete application!
+
+> [!NOTE]
+> Instead of manually writing hundreds of lines of code, you'll use out of the box capabilities of CAP combined with a single Claude prompt to generate everything.
+
+👉 Start Claude Code by entering claude in the terminal, which is not running the preview.
+
+```bash
+claude
+```
 
 ### Plugin: Claude Code
 In this exercise we are using the [CAP SKills library](https://github.com/capire/skills). A shared library of reusable skills, agents, and prompts for the team. Compatible with OpenCode, Claude Code, and other AI coding tools that follow the open standards.
