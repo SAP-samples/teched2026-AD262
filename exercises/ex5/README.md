@@ -1,4 +1,4 @@
-# Exercise 5 — Add Agent with Skills
+# Exercise 5 — Add Agentic Behaviour with Skills
 
 In this exercise, you will configure your matching service as an AI agent and create a skill that encodes AP (Accounts Payable) domain policy with business rules.
 

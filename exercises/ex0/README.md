@@ -128,7 +128,7 @@ The decision workflow should enforce valid transitions: a proposed match can be 
 or escalated; once approved it can only be escalated; rejected and escalated are final.
 
 Generate realistic sample data that also include data about furniture and laptops. Use SQLite for local dev. 
-Ensure to use cap status-flows are used for the worklow: https://cap.cloud.sap/docs/guides/services/status-flows 
+Ensure to use cap status-flows for the worklow: https://cap.cloud.sap/docs/guides/services/status-flows 
 Use the new case when assert constraints when possible to avoid custom code: https://cap.cloud.sap/docs/guides/services/constraints#assert-constraint
 Name the service InvoiceMatchingService, the service definition file srv/invoice-matching-service.cds, and the implementation srv/invoice-matching-service.js.
 ```

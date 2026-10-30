@@ -147,7 +147,7 @@ Now let's test the semantic search through MCP!
 👉 In Claude, type:
 
 ```text
-Run the search matches function and show similarities for 'office furnitures'
+Run the search matches function and show similarities for 'office furniture'
 ```
 
 **What should happen:**
