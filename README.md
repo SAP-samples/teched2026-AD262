@@ -65,7 +65,7 @@ To complete the exercises in this repository, you need:
 
 This workshop is structured into progressive exercises:
 
-### Core Exercises (115 minutes)
+### Core Exercises (105 minutes)
 
 - **[Exercise 0 - Initialize and Generate App](exercises/ex0/)** (20 min)
   - Initialize CAP project
@@ -93,17 +93,12 @@ This workshop is structured into progressive exercises:
   - Implement semantic search with local embeddings
   - Test meaning-based matching
 
-- **[Exercise 5 - Add Agent with Skills](exercises/ex5/)** (25 min)
-  - Configure CAP service as an agent
-  - Create AP domain policy skill
-  - Test intelligent match proposals
-
-### Optional Advanced Exercises (35 minutes)
-
-- **[Exercise 6 - Add Audit Log and Change Tracking](exercises/ex6/)** (Optional, 15 min)
+- **[Exercise 6 - Add Audit Log and Change Tracking](exercises/ex6/)** (15 min)
   - Configure audit logging for data privacy
   - Enable change tracking on match decisions
   - Test audit trail
+
+### Optional Advanced Exercise (20 minutes)
 
 - **[Exercise 7 - Add SAP-RPT-1 Recommendations](exercises/ex7/)** (Optional, 20 min)
   - Integrate SAP AI Core

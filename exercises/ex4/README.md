@@ -239,7 +239,7 @@ Now semantic search can help find invoice-PO matches.
 👉 Ask Claude to update the findMatches logic:
 
 ```text
-Update the findMatches action to use semantic similarity on descriptions when amounts are close but not exact
+Create the findMatches action to use semantic similarity on descriptions when amounts are close but not exact
 ```
 
 Claude will:
@@ -334,4 +334,6 @@ In this exercise, you:<br>
 
 Now that you have intelligent semantic matching, let's wrap it all in a conversational AI agent that can help Maria find and approve matches!
 
-**Continue to [Exercise 5 - Add Agent with Skills](../ex5/README.md)** to build an intelligent assistant for Maria.
+**Continue to [Exercise 6 - Audit Log & Change Tracking](../ex6/README.md)** to add enterprise governance and compliance features to your invoice matching system.
+
+
