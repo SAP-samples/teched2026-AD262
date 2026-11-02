@@ -332,7 +332,7 @@ In this exercise, you:<br>
 
 ## Next Steps
 
-Now that you have intelligent semantic matching, let's wrap it all in a conversational AI agent that can help Maria find and approve matches!
+Now you have intelligent semantic matching, let's wrap it all up with the next exercise!
 
 **Continue to [Exercise 6 - Audit Log & Change Tracking](../ex6/README.md)** to add enterprise governance and compliance features to your invoice matching system.
 
