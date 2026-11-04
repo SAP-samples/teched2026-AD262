@@ -61,7 +61,7 @@ This configures audit logging for CAP.
 npm add @cap-js/change-tracking
 ```
 
-This enables temporal versioning of entities.
+This enables change history for annotated fields.
 
 👉 Restart the CAP server:
 ```bash
@@ -82,11 +82,11 @@ Now we'll use Claude to add the necessary annotations.
 ```text
 /cap-developer Add data-privacy and change-tracking annotations to the AP matching model.
 
-Treat the supplier as the data subject. Add an unmanaged association from Invoice to the S/4 Supplier, joined on supplier name. 
-Use that association as the invoice's DataSubjectID so the audit-log plugin can reach the DataSubject; mark supplier name and 
-description as personal data. Annotate Supplier itself as DataSubject. Annotate the inoice desciption as DataSubjectDetails.
+Treat the supplier as the data subject. Reuse the supplier consumption view and the unmanaged invoice-to-supplier association joined on supplier name from Exercise 2.
+Use that association as the invoice's DataSubjectID so the audit-log plugin can reach the DataSubject; mark supplier name and
+description as personal data. Annotate Supplier itself as DataSubject and its key as DataSubjectID. Annotate Invoice as Other.
 
-Enable change tracking on the decision's status, confidence, and rationale using the changelog annotation in the domain entity.
+Enable change tracking on the decision's outcome, confidence, and rationale using the changelog annotation on each field in the domain entity.
 ```
 
 ### What Claude Will Generate
@@ -94,75 +94,60 @@ Enable change tracking on the decision's status, confidence, and rationale using
 Claude should:
 
 1. **Add Data Privacy Annotations** (db/schema.cds):
+
+Append these annotations to the existing `db/schema.cds`. Reuse the imports, supplier consumption view, and invoice association from Exercise 2, shown here as `Suppliers` (`ID`, `name`) and `supplierData`. Use the names in your generated model.
+
 ```cds
-using { API_BUSINESS_PARTNER as Suppliers } from '../apis/imported';
+annotate Suppliers with @PersonalData: {
+  EntitySemantics: 'DataSubject',
+  DataSubjectRole: 'Supplier'
+} {
+  ID   @PersonalData.FieldSemantics: 'DataSubjectID';
+  name @PersonalData.IsPotentiallyPersonal;
+};
 
-@PersonalData.EntitySemantics: 'DataSubject'
-entity Suppliers : Suppliers.A_BusinessPartner {
-  // Supplier is the data subject
-}
-
-entity Invoices : cuid, managed {
-  supplier      : String @PersonalData.FieldSemantics: 'DataSubjectID';
-  description   : String @PersonalData.FieldSemantics: 'DataSubjectDetails';
-  
-  // Unmanaged association for audit log
-  supplierData  : Association to one Suppliers on supplierData.name = supplier;
-  
-  // Other fields...
-}
+annotate Invoices with @PersonalData.EntitySemantics: 'Other' {
+  supplierData @PersonalData.FieldSemantics: 'DataSubjectID';
+  supplier     @PersonalData.IsPotentiallyPersonal;
+  description  @PersonalData.IsPotentiallyPersonal;
+};
 ```
 
 2. **Enable Change Tracking** (db/schema.cds):
 ```cds
-@changelog: [status, confidence, rationale]
-entity MatchDecisions : cuid, managed {
-  invoice       : Association to Invoices;
-  purchaseOrder : Association to PurchaseOrders;
-  confidence    : Decimal(3,2) @changelog;
-  rationale     : String(500) @changelog;
-  outcome       : String(20) @changelog;  // proposed, approved, rejected, escalated
-  
-  // Other fields...
-}
+annotate MatchDecisions {
+  confidence @changelog;
+  rationale  @changelog;
+  outcome    @changelog;
+};
 ```
 
-3. **Configure Audit Logging** (srv/invoice-matching-service.cds):
+3. **Data Privacy Annotations on the Service** (srv/invoice-matching-service.cds):
 ```cds
-using { InvoiceMatchingService } from './invoice-matching-service';
-
-// Mark sensitive operations for audit
-annotate InvoiceMatchingService.approve with @AuditLog.Operation.Write;
-annotate InvoiceMatchingService.reject with @AuditLog.Operation.Write;
-annotate InvoiceMatchingService.escalate with @AuditLog.Operation.Write;
-
-// Log data access
-annotate InvoiceMatchingService.Invoices with @AuditLog.Operation.Read;
-annotate InvoiceMatchingService.MatchDecisions with @AuditLog.Operation.Read;
+annotate InvoiceMatchingService.Invoices
+  with @PersonalData.EntitySemantics: 'Other' {
+    supplierData @PersonalData.FieldSemantics: 'DataSubjectID';
+    supplier     @PersonalData.IsPotentiallyPersonal;
+    description  @PersonalData.IsPotentiallyPersonal;
+};
 ```
 
-4. **Service Configuration** (package.json):
-```json
-{
-  "cds": {
-    "requires": {
-      "audit-log": {
-        "kind": "audit-log-to-console",
-        "impl": "@cap-js/audit-logging"
-      }
-    }
-  }
-}
+4. **Default Audit Logging Configuration**:
+
+The plugin logs to the console in development by default. No changes to `package.json` are needed. Verify the effective configuration:
+```bash
+cds env requires.audit-log
+# kind: 'audit-log-to-console'
 ```
 
 ### Review the Generated Code
 
 Check:
 - ✅ Is Supplier marked as DataSubject?
-- ✅ Is supplier name marked as DataSubjectID?
-- ✅ Is description marked as DataSubjectDetails?
+- ✅ Is the supplier key marked as DataSubjectID, and supplier name as personal data?
+- ✅ Is Invoice marked as Other, with supplierData as DataSubjectID and description as personal data?
 - ✅ Are MatchDecisions fields annotated with @changelog?
-- ✅ Are approve/reject/escalate marked for audit logging?
+- ✅ Does the service expose supplierData as DataSubjectID and supplier name and description as personal data?
 
 
 ## Exercise 6.3 — Test Updated Schema
@@ -195,7 +180,7 @@ Do a REST call to change the description of an invoice
 
 **Example:**
 ```bash
-curl -X PATCH http://localhost:4004/odata/v4/matching/Invoices(invoice-uuid) \
+curl -X PATCH "http://localhost:4004/odata/v4/matching/Invoices(invoice-uuid)" \
   -H "Content-Type: application/json" \
   -d '{"description": "Updated office supplies - paper and pens"}'
 ```
@@ -209,21 +194,22 @@ curl -X PATCH http://localhost:4004/odata/v4/matching/Invoices(invoice-uuid) \
 
 Check the console - you should see audit log entries like:
 ```
-[audit-log] - {
+[audit-log] - PersonalDataModified: {
   user: "anonymous",
   object: {
-    type: "Invoice",
+    type: "InvoiceMatchingService.Invoices",
     id: { ID: "invoice-uuid" }
   },
-  dataSubject: {
-    type: "Supplier", 
-    id: { name: "Acme Corp" }
+  data_subject: {
+    type: "InvoiceMatchingService.Suppliers",
+    role: "Supplier",
+    id: { ID: "supplier-id" }
   },
   attributes: [
     { name: "description", old: "Office supplies", new: "Updated office supplies - paper and pens" }
   ],
-  operation: "UPDATE",
-  timestamp: "2026-09-30T10:30:00.000Z"
+  uuid: "audit-event-uuid",
+  time: "2026-09-30T10:30:00.000Z"
 }
 ```
 
@@ -233,13 +219,10 @@ Check the console - you should see audit log entries like:
 
 👉 In the agent UI or directly via API, approve a match.
 
-2. Check the audit log shows:
-   - ✅ Action: approve
+Check the decision's change history shows:
    - ✅ Match decision ID
    - ✅ Old outcome: "proposed"
    - ✅ New outcome: "approved"
-   - ✅ Confidence score
-   - ✅ Rationale
    - ✅ Timestamp and user
 
 ### Test 3: Query Change History
@@ -251,8 +234,8 @@ Show me the change history for match decision INV-001
 ```
 
 Claude will:
-- Query the change tracking tables
-- Show all versions of the decision
+- Query the decision's `changes` association
+- Show changes to the tracked fields
 - Display who changed what and when
 
 **Expected output:**
@@ -265,8 +248,6 @@ Match Decision Change History:
 
 2. 2026-09-30 10:15 - Updated by maria@company.com
    - outcome: proposed → approved
-   - confidence: 0.85 (no change)
-   - rationale: unchanged
 ```
 
 ### Test 4: Data Subject Access Request (GDPR)
@@ -291,9 +272,9 @@ This demonstrates GDPR compliance - you can fulfill "right to access" requests.
 
 Let's understand how change tracking works.
 
-### Temporal Tables
+### Change Records
 
-For each entity with `@changelog`:
+The plugin stores field-level changes in `sap.changelog.Changes` and exposes them through the entity's `changes` association:
 ```text
 MatchDecisions (current state)
 ├── ID: uuid
@@ -301,48 +282,29 @@ MatchDecisions (current state)
 ├── outcome: "approved"
 └── ...
 
-MatchDecisions_Changes (history)
-├── ID: uuid (same)
-├── validFrom: 2026-09-30 10:00
-├── validTo: 2026-09-30 10:15
-├── confidence: 0.80
-├── outcome: "proposed"
-└── modifiedBy: "agent"
-
-├── ID: uuid (same)
-├── validFrom: 2026-09-30 10:15
-├── validTo: 9999-12-31
-├── confidence: 0.85
-├── outcome: "approved"
-└── modifiedBy: "maria@company.com"
+sap.changelog.Changes (one record per changed field)
+├── entityKey: uuid
+├── attribute: "outcome"
+├── valueChangedFrom: "proposed"
+├── valueChangedTo: "approved"
+├── createdAt: 2026-09-30 10:15
+└── createdBy: "maria@company.com"
 ```
 
 ### Querying History
 
-```sql
--- Current state
-SELECT * FROM MatchDecisions WHERE ID = 'uuid';
-
--- Point in time (as of 10:10)
-SELECT * FROM MatchDecisions_Changes 
-WHERE ID = 'uuid' 
-  AND validFrom <= '2026-09-30 10:10'
-  AND validTo > '2026-09-30 10:10';
-
--- All changes
-SELECT * FROM MatchDecisions_Changes 
-WHERE ID = 'uuid'
-ORDER BY validFrom;
+```bash
+curl "http://localhost:4004/odata/v4/matching/MatchDecisions(decision-uuid)/changes"
 ```
 
 ### Automatic Management
 
-CAP handles:
-- ✅ Creating history records on update
-- ✅ Closing previous versions (setting validTo)
+The plugin handles:
+- ✅ Recording changes to annotated fields
 - ✅ Recording user context
 - ✅ Tracking timestamps
-- ✅ Maintaining referential integrity
+
+Change tracking records differences, not full temporal versions. Unchanged fields do not produce update records.
 
 ## Exercise 6.6 — Audit Agent Actions
 
@@ -355,7 +317,7 @@ Find unmatched invoices and propose matches
 
 The agent will create multiple match decisions.
 
-👉 Check the audit log — each decision creation is logged, the user context shows "agent", the data subject is identified (supplier), and all fields are recorded.
+👉 Check the change history — creation values for `outcome`, `confidence`, and `rationale` are recorded with the request's user context.
 
 👉 Ask the agent to approve one:
 ```text
@@ -364,7 +326,7 @@ Approve the match for invoice INV-001
 
 👉 Click Yes on the human approval prompt.
 
-👉 Check the audit log — the approval action is logged, showing the human approved (not just the agent) and the state transition.
+👉 Check the change history — the transition from "proposed" to "approved" is recorded with the request's user context.
 
 **Why This Matters:**
 - 🔍 Every AI decision is traceable
@@ -417,7 +379,7 @@ The annotations help:
 ✅ Added data privacy annotations (GDPR)  
 ✅ Enabled change tracking on decisions  
 ✅ Tested audit trail functionality  
-✅ Understood temporal versioning  
+✅ Understood field-level change history
 ✅ Verified AI agent action logging  
 ✅ Demonstrated GDPR compliance
 
@@ -538,4 +500,3 @@ Your invoice matching system now has enterprise-grade governance! 🔒
 ---
 
 **Next:** [Exercise 7 - SAP-RPT-1 Recommendations](../ex7/README.md) (Optional)  
-
